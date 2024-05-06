@@ -5,11 +5,18 @@ block content
         p(class="error")= error
     if vinyl
         form(action="/vinyl/"+vinyl.vinyl_id, method="post") 
-            label(for="name") Nombre 
-            input(id="name" type="text" name="name" value=vinyl.name) 
-            label(for="is_alive") Vive?
-            input#is_alive(type="checkbox", name="is_alive" checked=vinyl.is_alive ? true:false)
-            label(for="birth_date")
-            input#birth_date(type="date", name="birth_date" value=vinyl.birth_date)  
+
+            label(for="album_name") Nombre del album
+            input(id="album_name" type="text" name="album_name" value=vinyl.album_name) 
+
+            label(for="artist_name") Nombre del artista
+            input(id="artist_name" type="text" name="artist_name" value=vinyl.artist_name) 
+
+            label(for="price") Precio
+            input(id="price" type="number" name="price" value=vinyl.price) 
+
+            label(for="relase_date")
+            input#relase_date(type="date", name="relase_date" value=vinyl.relase_date)  
+            
             button(type="submit") Guardar
 

@@ -7,18 +7,18 @@ const vinyls = [
         "relase_date" : "03/12/1992"
 	},
 	{
-		"vinyl_id" : 1,
-		"album_name" : "Nevermind",
-		"artist_name" : "Nirvana",
-		"price" : 3,
-        "relase_date" : "03/12/1992"
+		"vinyl_id" : 2,
+		"album_name" : "Ensalada de coño",
+		"artist_name" : "Tu madre es puta",
+		"price" : 6,
+        "relase_date" : "26/07/2001"
 	},
 	{
-		"vinyl_id" : 1,
-		"album_name" : "Nevermind",
-		"artist_name" : "Nirvana",
-		"price" : 3,
-        "relase_date" : "03/12/1992"
+		"vinyl_id" : 3,
+		"album_name" : "Matadero 5",
+		"artist_name" : "Taburete",
+		"price" : 57,
+        "relase_date" : "11/05/2022"
 	}
 ]
 async function getAll(){
