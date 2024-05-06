@@ -6,7 +6,7 @@ import vinylViewRouter from "./vinylViewRouter.js";
 const router = Router();
 
 
-router.use("/artist",userViewRouter);
+router.use("/user",userViewRouter);
 router.use("/vinyl",vinylViewRouter);
 
 export default router;

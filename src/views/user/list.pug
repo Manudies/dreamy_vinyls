@@ -1,17 +1,17 @@
 extends ../layout
 
 block content
-    h1 lista de artistas
+    h1 lista de user
     if error 
         p(class="error")= error
     if data
         ul
-            each artist in data 
+            each user in data 
                 li
-                    a(href="/artist/"+artist.artist_id)= artist.name
-                    a(href=`/artist/${artist.artist_id}/update`) 
+                    a(href="/user/"+user.user)= user.name
+                    a(href=`/user/${user.user}/update`) 
                         button Editar
-                    form(action=`/artist/${artist.artist_id}/remove`, method="post") 
+                    form(action=`/user/${user.user}/remove`, method="post") 
                         button(type="submit") Borrar
-    a(href="/artist/new")
+    a(href="/user/new")
         button Nuevo
