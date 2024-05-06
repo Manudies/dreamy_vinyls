@@ -8,10 +8,10 @@ block content
         ul
             each user in data 
                 li
-                    a(href="/user/"+user.user)= user.name
-                    a(href=`/user/${user.user}/update`) 
+                    a(href="/user/"+user.user_id)= user.user_name
+                    a(href=`/user/${user.user_id}/update`) 
                         button Editar
-                    form(action=`/user/${user.user}/remove`, method="post") 
+                    form(action=`/user/${user.user_id}/remove`, method="post") 
                         button(type="submit") Borrar
     a(href="/user/new")
         button Nuevo
