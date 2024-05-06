@@ -1,12 +1,15 @@
 extends ../layout
 
 block content 
-    form(action="/artist", method="post") 
-        label(for="name") Nombre 
-        input(id="name" type="text" name="name") 
-        label(for="is_alive") Vive?
-        input#is_alive(type="checkbox", name="is_alive")
-        label(for="birth_date")
-        input#birth_date(type="date", name="birth_date")  
+    form(action="/user", method="post") 
+        label(for="user_name") Nombre 
+        input(id="user_name" type="text" name="user_name") 
+
+        label(for="user_password") Contraseña 
+        input(id="user_password" type="text" name="user_password")
+
+        label(for="user_city") Ciudad 
+        input(id="user_city" type="text" name="user_city")
+
         button(type="submit") Crear
 
