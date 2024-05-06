@@ -30,7 +30,7 @@ async function getAll(){
 async function getById(id){
     const user = users.find(user => user.user_id === id);
     if(!user){
-        return {error:"El artista no existe"};
+        return {error:"El usuario no existe"};
     }
     return {data:user};
 }
@@ -78,7 +78,7 @@ async function update(id,userData){
 async function remove(id){
     const artistIndex = users.findIndex(user=>user.user_id===id);
     if(artistIndex === -1){
-        return {error:"no se pueden borrar artistas que no existen"}
+        return {error:"no se pueden borrar usuarios que no existen"}
     }
     const deletedArtist = users.splice(artistIndex,1);
     return {data:deletedArtist};
