@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import vinylApiController from "../../controllers/user/vinylApiController.js";
+import vinylApiController from "../../controllers/vinyl/vinylApiController.js";
 
 const router = Router();
 

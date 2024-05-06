@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import vinylViewController from "../../controllers/user/vinylViewController.js";
+import vinylViewController from "../../controllers/vinyl/vinylViewController.js";
 
 const router = Router();
 

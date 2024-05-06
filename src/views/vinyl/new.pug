@@ -1,12 +1,19 @@
 extends ../layout
 
 block content 
-    form(action="/artist", method="post") 
-        label(for="name") Nombre 
-        input(id="name" type="text" name="name") 
-        label(for="is_alive") Vive?
-        input#is_alive(type="checkbox", name="is_alive")
-        label(for="birth_date")
-        input#birth_date(type="date", name="birth_date")  
+    form(action="/vinyl", method="post")
+
+        label(for="album_name") Nombre del album
+        input(id="album_name" type="text" name="album_name")
+
+        label(for="artist_name") Nombre del artista
+        input(id="artist_name" type="text" name="artist_name")
+
+        label(for="price") Precio
+        input(id="price" type="number" name="price")
+
+        label(for="relase_date") Fecha de salida
+        input#relase_date(type="date", name="relase_date") 
+        
         button(type="submit") Crear
 

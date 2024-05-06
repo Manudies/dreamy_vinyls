@@ -3,13 +3,13 @@ extends ../layout
 block content 
     if error 
         p(class="error")= error
-    if artist
-        form(action="/artist/"+artist.artist_id, method="post") 
+    if vinyl
+        form(action="/vinyl/"+vinyl.vinyl_id, method="post") 
             label(for="name") Nombre 
-            input(id="name" type="text" name="name" value=artist.name) 
+            input(id="name" type="text" name="name" value=vinyl.name) 
             label(for="is_alive") Vive?
-            input#is_alive(type="checkbox", name="is_alive" checked=artist.is_alive ? true:false)
+            input#is_alive(type="checkbox", name="is_alive" checked=vinyl.is_alive ? true:false)
             label(for="birth_date")
-            input#birth_date(type="date", name="birth_date" value=artist.birth_date)  
+            input#birth_date(type="date", name="birth_date" value=vinyl.birth_date)  
             button(type="submit") Guardar
 
