@@ -3,13 +3,11 @@ extends ../layout
 block content 
     if error 
         p(class="error")= error
-    if artist
-        form(action="/artist/"+artist.artist_id, method="post") 
-            label(for="name") Nombre 
-            input(id="name" type="text" name="name" value=artist.name) 
-            label(for="is_alive") Vive?
-            input#is_alive(type="checkbox", name="is_alive" checked=artist.is_alive ? true:false)
-            label(for="birth_date")
-            input#birth_date(type="date", name="birth_date" value=artist.birth_date)  
+    if cart
+        form(action="/cart/"+cart.cart_id, method="post") 
+            label(for="id_user") Id del Usuario
+            input(id="id_user" type="text" name ="id_user" value=cart.id_user) 
+            label(for="cart_closed") Comprar?
+            input#cart_closed(type="checkbox", name="cart_closed" checked=cart.cart_closed ? true:false)
             button(type="submit") Guardar
 
