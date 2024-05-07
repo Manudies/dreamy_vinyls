@@ -11,7 +11,7 @@ async function findAll() {
 }
 
 async function findByPk(pk){
-    const queryString="SELECT * FROM vinyl WHERE vinyl_id=?";
+    const queryString="SELECT * FROM vinyl WHERE id_vinyl=?";
     const [rows,fields] = await connection.query(queryString,[pk]);
     console.log("find by pk");
     console.log("rows",rows);
@@ -32,7 +32,7 @@ async function create(data){
 
 async function update(pk,data){
     
-    const queryString = "UPDATE vinyl SET album_name=?, artist_name=?, price=?, relase_data=? WHERE vinyl_id=?";
+    const queryString = "UPDATE vinyl SET album_name=?, artist_name=?, price=?, relase_data=? WHERE id_vinyl=?";
     const [rows,fields] = await connection.query(queryString,[data.album_name,data.artist_name,data.price,data.relase_date,pk]);
     console.log("update");
     console.log("rows",rows);
@@ -41,7 +41,7 @@ async function update(pk,data){
 }
 
 async function remove(pk){
-    const queryString="DELETE FROM vinyl WHERE vinyl_id=?";
+    const queryString="DELETE FROM vinyl WHERE id_vinyl=?";
     const [rows,fields] = await connection.query(queryString,[pk]);
     console.log("delete");
     console.log("rows",rows);
