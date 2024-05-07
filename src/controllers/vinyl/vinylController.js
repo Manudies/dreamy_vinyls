@@ -1,20 +1,20 @@
 const vinyls = [
 	{
-		"vinyl_id" : 1,
+		"id_vinyl" : 1,
 		"album_name" : "Nevermind",
 		"artist_name" : "Nirvana",
 		"price" : 3,
         "relase_date" : "03/12/1992"
 	},
 	{
-		"vinyl_id" : 2,
+		"id_vinyl" : 2,
 		"album_name" : "Ensalada de coño",
 		"artist_name" : "Tu madre es puta",
 		"price" : 6,
         "relase_date" : "26/07/2001"
 	},
 	{
-		"vinyl_id" : 3,
+		"id_vinyl" : 3,
 		"album_name" : "Matadero 5",
 		"artist_name" : "Taburete",
 		"price" : 57,
@@ -26,7 +26,7 @@ async function getAll(){
 }
 
 async function getById(id){
-    const vinyl = vinyls.find(vinyl => vinyl.vinyl_id === id);
+    const vinyl = vinyls.find(vinyl => vinyl.id_vinyl === id);
     if(!vinyl){
         return {error:"El vinilo no existe"};
     }
@@ -39,10 +39,10 @@ async function create(vinylData){
     if(!album_name ){
         return {error:"Los vinilos deben tener nombre!"};
     }
-    const maxId = Math.max(...vinyls.map(vinyl => vinyl.vinyl_id));
+    const maxId = Math.max(...vinyls.map(vinyl => vinyl.id_vinyl));
     const newId= maxId + 1;
     const newVinyl = {
-        vinyl_id:newId,
+        id_vinyl:newId,
         album_name,
         artist_name,
         price,
@@ -55,7 +55,7 @@ async function create(vinylData){
 
 async function update(id,VinylData){
     const {album_name,artist_name,price,relase_date} = VinylData;
-    const vinyl = vinyls.find(vinyl=>vinyl.vinyl_id===id);
+    const vinyl = vinyls.find(vinyl=>vinyl.id_vinyl===id);
     if(!vinyl){
         return {error:"No se puede modificar un vinilo que no existe, bobolon"};
     }
@@ -75,7 +75,7 @@ async function update(id,VinylData){
 }
 
 async function remove(id){
-    const vinylIndex = vinyls.findIndex(vinyl=>vinyl.vinyl_id===id);
+    const vinylIndex = vinyls.findIndex(vinyl=>vinyl.id_vinyl===id);
     if(vinylIndex === -1){
         return {error:"no se pueden borrar vinilos que no existen"}
     }
