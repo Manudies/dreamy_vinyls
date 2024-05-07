@@ -51,9 +51,9 @@ async function update(id,genreData){
     }
     if(genre_name){
         genre.genre_name = genre_name;
-        console.log(genre.genre_name)
+
     }
-    console.log(genre.genre_name)
+  
 
     return {data:genre};
 }
