@@ -1,15 +1,17 @@
 extends ../layout
 
-block content 
-    form(action="/user", method="post") 
-        label(for="user_name") Nombre 
-        input(id="user_name" type="text" name="user_name") 
+block content
 
-        label(for="user_password") Contraseña 
-        input(id="user_password" type="text" name="user_password")
+        form(class="new_form" action="/user", method="post") 
+            div(class="input_form")
+                label(for="user_name") Nombre 
+                input(id="user_name" type="text" name="user_name") 
+            div(class="input_form")
+                label(for="user_password") Contraseña 
+                input(id="user_password" type="text" name="user_password")
+            div(class="input_form")
+                label(for="user_city") Ciudad 
+                input(id="user_city" type="text" name="user_city")
 
-        label(for="user_city") Ciudad 
-        input(id="user_city" type="text" name="user_city")
-
-        button(type="submit") Crear
+            button(class="crear_buttom" type="submit") Crear
 

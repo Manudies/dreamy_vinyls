@@ -1,17 +1,23 @@
 extends ../layout
 
 block content
-    h1 lista de user
+    h1 lista de usuarios
     if error 
         p(class="error")= error
     if data
-        ul
+        ul(class="user_list_data")
             each user in data 
                 li
                     a(href="/user/"+user.user_id)= user.user_name
-                    a(href=`/user/${user.user_id}/update`) 
-                        button Editar
-                    form(action=`/user/${user.user_id}/remove`, method="post") 
-                        button(type="submit") Borrar
+                    li= user.user_city
+                    if user.user_rol == 0 
+                        li Administardor
+                    if user.user_rol == 1 || user.user_rol == null 
+                        li Cliente
+                    div(class="buttom_div")
+                        a(class="user_boton_editar" href=`/user/${user.user_id}/update`) 
+                            button Editar
+                        form(action=`/user/${user.user_id}/remove`, method="post") 
+                            button(type="submit") Borrar
     a(href="/user/new")
         button Nuevo
