@@ -1,41 +1,36 @@
-const users = [
-	{
-		"id_user" : 1,
-		"user_name" : "Lady Gaga",
-        "user_password": 1234,
-        "user_city": "Bilbao",
-		"user_rol": "0"
-	},
-	{
-		"id_user" : 2,
-		"user_name" : "Evaristo",
-        "user_password": 1234,
-        "user_city": "Bilbao",
-        "user_rol": "1"
-		
-	},
-	{
-		"id_user" : 3,
-		"user_name" : "Nacho",
-        "user_password": 1234,
-        "user_city": "Bilbao",
-        "user_rol": "1"
-		
-	}
-]
+import userModel from "../../models/userModel.js";
+
 async function getAll(){
-    return {data:users}
+    try {
+        const users = await userModel.findAll({include:["usuarios"]})
+        return {data:users}
+    }
+    catch (error) {
+        console.error(error);
+        return { error: error };
+    }
 }
 
 async function getById(id){
-    const user = users.find(user => user.id_user === id);
-    if(!user){
-        return {error:"El usuario no existe"};
+    try {
+        const user = await userModel.findByPk(id);
+        if (!user) {
+            return { error: "El usuario no existe"};
+        }
+        return {data: user};
+    } catch (error) {
+        console.error(error);
+        return { error };
     }
-    return {data:user};
 }
 
 async function create(userData){
+    try {
+        const newUser = await userModel.create(userData);
+        console.log("newUser", newUser)
+    } catch (error) {
+        
+    }
     const {id_user, user_name, user_password, user_city, user_rol} = userData;
     // get max id_user from users
     if(!user_name ){
