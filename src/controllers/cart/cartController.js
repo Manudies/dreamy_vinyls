@@ -57,6 +57,7 @@ async function update(id,cartData){
     
     if(cart_closed !== null && cart_closed!== undefined){
         cart.cart_closed=cart_closed
+        console.log("cart_closer= "+cart.cart_closed)
     }
     return {data:cart};
 }

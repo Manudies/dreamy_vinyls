@@ -5,6 +5,11 @@ block content
         p(class="error")= error
     if cart 
         h2= cart.id_user
-        p Comprar: #{cart_closed==1 ? 'si': 'no'} 
+        //- Otra manera de hacerlo
+        //- p Comprar: #{cart.cart_closed==1 ? 'si': 'no'} 
+        if cart.cart_closed == 1
+            p Comprar: Si
+        else 
+            p Comprar: No
     a(href="/cart")
         button Volver
