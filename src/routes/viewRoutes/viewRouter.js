@@ -7,7 +7,6 @@ import genreViewRouter from "./genreViewRouter.js";
 
 const router = Router();
 
-
 router.use("/user",userViewRouter);
 router.use("/vinyl",vinylViewRouter);
 router.use("/cart",cartViewRouter);
