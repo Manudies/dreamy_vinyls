@@ -11,7 +11,7 @@ const vinylModel = sequelize.define("vinyl",
             primaryKey:true,
             autoIncrement:true
         },
-        album_namr: {
+        album_name: {
             type:DataTypes.STRING(45),
             allowNull:false
         },
