@@ -2,7 +2,7 @@ import userModel from "../../models/userModel.js";
 
 async function getAll(){
     try {
-        const users = await userModel.findAll({include:["usuarios"]})
+        const users = await userModel.findAll()
         return {data:users}
     }
     catch (error) {
@@ -29,54 +29,40 @@ async function create(userData){
         const newUser = await userModel.create(userData);
         console.log("newUser", newUser)
     } catch (error) {
-        
+        console.error(error);
+        return {error}
     }
-    const {id_user, user_name, user_password, user_city, user_rol} = userData;
-    // get max id_user from users
-    if(!user_name ){
-        return {error:"Los usuarios deben tener nombre"};
-    }
-    if (!user_password){
-        return {error:"Los usuarios deben tener contraseña"}
-    }
-    const maxId = Math.max(...users.map(user => user.id_user));
-    const newId= maxId + 1;
-    const newUser = {
-        id_user:newId,
-        user_name,
-        user_password, 
-        user_city,
-        user_rol
-    };
-    users.push(newUser);
-    return {data:newUser};
 }
 
 async function update(id,userData){
-    const {id_user, user_name, user_password, user_city, user_rol} = userData;
-    const user = users.find(user=>user.id_user===id);
-    if(!user){
-        return {error:"No se puede modificar un usuario que no existe, espabila!!"};
+    try {
+        if(userData.user_name ===""){
+            delete userData.user_name;
+        }
+        const newUser = await userModel.update(userData,
+        {
+            where:
+            {
+                id_user:id
+            }
+        }
+    );
+    return {data:newUser};
+    } catch (error) {
+        console.error(error);
+        return {error}  
     }
-    if(user_name){
-        user.user_name = user_name;
-    }
-    if(user_password){
-        user.user_password = user_password;
-    }
-    if(user_city){
-        user.user_city = user_city
-    }
-    return {data:user};
 }
 
 async function remove(id){
-    const artistIndex = users.findIndex(user=>user.id_user===id);
-    if(artistIndex === -1){
-        return {error:"no se pueden borrar usuarios que no existen"}
+    try {
+        const result = await userModel.remove(id);
+        return {data:result}
+        
+    } 
+    catch (error) {
+        console.error(error);
     }
-    const deletedArtist = users.splice(artistIndex,1);
-    return {data:deletedArtist};
 }
 
 export {
