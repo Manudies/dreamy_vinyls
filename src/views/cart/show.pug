@@ -3,10 +3,13 @@ extends ../layout
 block content
     if error 
         p(class="error")= error
-    if artist 
-        h2= artist.name 
-        p Vive: #{artist.is_alive==1 ? 'si': 'no'} 
-        if artist.birth_date 
-            p Fecha de nacimiento: #{artist.birth_date}
-    a(href="/artist")
+    if cart 
+        h2= cart.id_user
+        //- Otra manera de hacerlo
+        //- p Comprar: #{cart.cart_closed==1 ? 'si': 'no'} 
+        if cart.cart_closed == 1
+            p Comprar: Si
+        else 
+            p Comprar: No
+    a(href="/cart")
         button Volver
