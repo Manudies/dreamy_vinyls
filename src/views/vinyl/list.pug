@@ -8,10 +8,10 @@ block content
         ul
             each vinyl in data 
                 li
-                    a(href="/vinyl/"+vinyl.vinyl_id)= vinyl.album_name
-                    a(href=`/vinyl/${vinyl.vinyl_id}/update`) 
+                    a(href="/vinyl/"+vinyl.id_vinyl)= vinyl.album_name
+                    a(href=`/vinyl/${vinyl.id_vinyl}/update`) 
                         button Editar
-                    form(action=`/vinyl/${vinyl.vinyl_id}/remove`, method="post") 
+                    form(action=`/vinyl/${vinyl.id_vinyl}/remove`, method="post") 
                         button(type="submit") Borrar
     a(href="/vinyl/new")
         button Nuevo
