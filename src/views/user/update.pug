@@ -4,7 +4,7 @@ block content
     if error 
         p(class="error")= error
     if user
-        form(action="/user/"+user.user_id, method="post")
+        form(action="/user/"+user.id_user, method="post")
 
             label(for="user_name") Nombre 
             input(id="user_name" type="text" name="user_name" value=user.user_name)

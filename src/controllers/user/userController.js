@@ -1,13 +1,13 @@
 const users = [
 	{
-		"user_id" : 1,
+		"id_user" : 1,
 		"user_name" : "Lady Gaga",
         "user_password": 1234,
         "user_city": "Bilbao",
 		"user_rol": "0"
 	},
 	{
-		"user_id" : 2,
+		"id_user" : 2,
 		"user_name" : "Evaristo",
         "user_password": 1234,
         "user_city": "Bilbao",
@@ -15,7 +15,7 @@ const users = [
 		
 	},
 	{
-		"user_id" : 3,
+		"id_user" : 3,
 		"user_name" : "Nacho",
         "user_password": 1234,
         "user_city": "Bilbao",
@@ -28,7 +28,7 @@ async function getAll(){
 }
 
 async function getById(id){
-    const user = users.find(user => user.user_id === id);
+    const user = users.find(user => user.id_user === id);
     if(!user){
         return {error:"El usuario no existe"};
     }
@@ -36,18 +36,18 @@ async function getById(id){
 }
 
 async function create(userData){
-    const {user_id, user_name, user_password, user_city, user_rol} = userData;
-    // get max user_id from users
+    const {id_user, user_name, user_password, user_city, user_rol} = userData;
+    // get max id_user from users
     if(!user_name ){
         return {error:"Los usuarios deben tener nombre"};
     }
     if (!user_password){
         return {error:"Los usuarios deben tener contraseña"}
     }
-    const maxId = Math.max(...users.map(user => user.user_id));
+    const maxId = Math.max(...users.map(user => user.id_user));
     const newId= maxId + 1;
     const newUser = {
-        user_id:newId,
+        id_user:newId,
         user_name,
         user_password, 
         user_city,
@@ -58,8 +58,8 @@ async function create(userData){
 }
 
 async function update(id,userData){
-    const {user_id, user_name, user_password, user_city, user_rol} = userData;
-    const user = users.find(user=>user.user_id===id);
+    const {id_user, user_name, user_password, user_city, user_rol} = userData;
+    const user = users.find(user=>user.id_user===id);
     if(!user){
         return {error:"No se puede modificar un usuario que no existe, espabila!!"};
     }
@@ -76,7 +76,7 @@ async function update(id,userData){
 }
 
 async function remove(id){
-    const artistIndex = users.findIndex(user=>user.user_id===id);
+    const artistIndex = users.findIndex(user=>user.id_user===id);
     if(artistIndex === -1){
         return {error:"no se pueden borrar usuarios que no existen"}
     }

@@ -1,17 +1,17 @@
 extends ../layout
 
 block content
-    h1 lista de artistas
+    h1 lista de géneros
     if error 
         p(class="error")= error
     if data
         ul
-            each artist in data 
+            each genre in data 
                 li
-                    a(href="/artist/"+artist.artist_id)= artist.name
-                    a(href=`/artist/${artist.artist_id}/update`) 
+                    a(href="/genre/"+genre.id_genre)= genre.genre_name
+                    a(href=`/genre/${genre.id_genre}/update`) 
                         button Editar
-                    form(action=`/artist/${artist.artist_id}/remove`, method="post") 
+                    form(action=`/genre/${genre.id_genre}/remove`, method="post") 
                         button(type="submit") Borrar
-    a(href="/artist/new")
+    a(href="/genre/new")
         button Nuevo

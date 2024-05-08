@@ -1,12 +1,9 @@
 extends ../layout
 
 block content 
-    form(action="/artist", method="post") 
-        label(for="name") Nombre 
-        input(id="name" type="text" name="name") 
-        label(for="is_alive") Vive?
-        input#is_alive(type="checkbox", name="is_alive")
-        label(for="birth_date")
-        input#birth_date(type="date", name="birth_date")  
+    form(action="/cart", method="post") 
+        label(for="id_user") Id de Usuario
+        input(id="id_user" type="text" name="id_user") 
+        label(for="cart_closed") Comprar?
+        input#cart_closed(type="checkbox", name="cart_closed")
         button(type="submit") Crear
-

@@ -1,12 +1,9 @@
 extends ../layout
 
 block content 
-    form(action="/artist", method="post") 
-        label(for="name") Nombre 
-        input(id="name" type="text" name="name") 
-        label(for="is_alive") Vive?
-        input#is_alive(type="checkbox", name="is_alive")
-        label(for="birth_date")
-        input#birth_date(type="date", name="birth_date")  
+    form(action="/genre", method="post") 
+        label(for="genre_name") Género 
+        input(id="genre_name" type="text" name="genre_name") 
+ 
         button(type="submit") Crear
 

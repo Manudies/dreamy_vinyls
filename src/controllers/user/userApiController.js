@@ -14,16 +14,16 @@ async function getById(req,res){
 
 async function create(req,res){
     // const {name,is_alive,birth_date} = req.body;
-    const {user_id, user_name, user_password, user_city, user_rol} = req.query;
-    const {error,data} = await userController.create({user_id, user_name, user_password, user_city, user_rol});
+    const {id_user, user_name, user_password, user_city, user_rol} = req.query;
+    const {error,data} = await userController.create({id_user, user_name, user_password, user_city, user_rol});
     res.json({error,data});
 }
 
 async function update(req,res){
     const id = parseInt(req.params.id);
     // const {name,is_alive,birth_date} = req.body;
-    const {user_id, user_name, user_password, user_city, user_rol} = req.query;
-    const {error,data} = await userController.update(id,{user_id, user_name, user_password, user_city, user_rol});
+    const {id_user, user_name, user_password, user_city, user_rol} = req.query;
+    const {error,data} = await userController.update(id,{id_user, user_name, user_password, user_city, user_rol});
     res.json({error,data});
 }
 
