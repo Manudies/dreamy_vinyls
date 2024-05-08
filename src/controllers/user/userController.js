@@ -2,7 +2,7 @@ import userModel from "../../models/userModel.js";
 
 async function getAll(){
     try {
-        const users = await userModel.findAll({include:["usuarios"]})
+        const users = await userModel.findAll()
         return {data:users}
     }
     catch (error) {

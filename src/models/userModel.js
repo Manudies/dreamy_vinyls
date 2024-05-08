@@ -1,10 +1,10 @@
 import { DataTypes } from "sequelize"
 import sequelize from "../config/sequelize.js"
 
-const userModel = sequelize.define("usuarios", 
+const userModel = sequelize.define("user", 
     {
         id_user:{
-            type: DataTypes.INT.UNSIGNED,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull:false,
             primaryKey:true,
             autoIncrement:true
@@ -25,3 +25,5 @@ const userModel = sequelize.define("usuarios",
 
     }
 )
+
+export default userModel;
