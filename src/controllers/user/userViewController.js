@@ -17,9 +17,9 @@ async function createForm(req,res){
 }
 
 async function create(req,res){
-    const {user_id, user_name, user_password, user_city, user_rol} = req.body;
+    const {id_user, user_name, user_password, user_city, user_rol} = req.body;
     //const {name,is_alive,birth_date} = req.query;
-    const {error,data} = await userController.create({user_id, user_name, user_password, user_city, user_rol});
+    const {error,data} = await userController.create({id_user, user_name, user_password, user_city, user_rol});
     //res.json({error,data});
     res.redirect("/user");
 }
@@ -31,8 +31,8 @@ async function updateForm(req,res){
 
 async function update(req,res){
     const id = parseInt(req.params.id);
-    const {user_id, user_name, user_password, user_city, user_rol} = req.body;
-    const {error,data} = await userController.update(id,{user_id, user_name, user_password, user_city, user_rol});
+    const {id_user, user_name, user_password, user_city, user_rol} = req.body;
+    const {error,data} = await userController.update(id,{id_user, user_name, user_password, user_city, user_rol});
     res.redirect("/user");
 }
 
