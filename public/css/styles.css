@@ -1,0 +1,42 @@
+.user_list_data{
+    background-color: aquamarine;
+    list-style: none;
+}
+
+.buttom_div{
+    display: flex;
+    padding: 10px 0px;
+}
+
+.user_boton_editar{
+    padding-right: 10px ;
+}
+
+.new_form{
+    display: flex;
+    flex-direction: column;
+}
+
+.input_form{
+    width: 275px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+#user_name{
+    margin-left: 10px;
+}
+
+#user_password{
+    margin-left: 10px;
+}
+
+#user_city{
+    margin-left: 10px;
+}
+
+.crear_buttom{
+    width: 275px;
+    margin: 25px;
+    justify-self: start;
+}
