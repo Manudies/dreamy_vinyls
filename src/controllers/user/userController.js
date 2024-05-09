@@ -24,6 +24,17 @@ async function getById(id){
     }
 }
 
+async function getByUser(user_name){
+    try {
+        const user = userModel.findOne({where:{user_name:user_name}})
+        return {data:user};
+        
+    } catch (error) {
+        console.error(error);
+        return {error};
+    }
+}
+
 async function create(userData){
     try {
         const newUser = await userModel.create(userData);
@@ -68,6 +79,7 @@ async function remove(id){
 export {
     getAll,
     getById,
+    getByUser,
     create,
     update,
     remove
@@ -77,6 +89,7 @@ export {
 export default {
     getAll,
     getById,
+    getByUser,
     create,
     update,
     remove
