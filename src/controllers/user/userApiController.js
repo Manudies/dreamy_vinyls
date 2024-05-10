@@ -1,8 +1,31 @@
 import userController from "./userController.js";
 
+async function register(req,res) {
+    const {user_name,password,passwordRepeat} = req.body;
+    const {error,data} = await userController.register(user_name,password,passwordRepeat);
+    if(error){
+        res.status(400).json({error});
+    }
+    else{
+        res.json({data});
+    }
+}
+
+async function login(req,res) {
+    const {user_name,password} = req.body;
+    const {error,data} = await userController.login(user_name,password);
+    if(error){
+        res.status(400).json({error});
+    }
+    else{
+        res.json({data});
+    }
+}
+
+
 async function getAll(req,res){
-    const {error,data} = await userController.getAll();
-    res.json({error,data});
+    const {data:users}= await userController.getAll();
+    res.json(users);
 }
 
 async function getById(req,res){
@@ -36,6 +59,8 @@ async function remove(req,res){
 
 
 export {
+    register,
+    login,
     getAll,
     getById,
     create,
@@ -44,6 +69,8 @@ export {
 }
 
 export default {
+    register,
+    login,
     getAll,
     getById,
     create,
