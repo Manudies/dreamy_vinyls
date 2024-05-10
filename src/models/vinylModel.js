@@ -28,5 +28,19 @@ const vinylModel = sequelize.define("vinyl",
     }
 )
 
+// vinylModel.belongsToMany(cartModel,
+//     {
+//         through:"cart_has_vinyl",
+//         as:"carts",
+//         foreignKey:"cart_id"
+//     }
+// );
+// cartModel.belongsToMany(vinylModel,
+//     {
+//         through:"cart_has_vinyl",
+//         as:"vinyls",
+//         foreignKey:"vinyl_id"
+//     }
+// );
 
 export default vinylModel;
