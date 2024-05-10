@@ -9,6 +9,10 @@ const sessionData = {
     secret:process.env.SESSION_SECRET,
     resave:true,
     saveUninitialized:true,
+    cookie:{
+        secure:false,
+        maxAge: 60 * 60 *1000
+    }
 }
 
 const app = express();
