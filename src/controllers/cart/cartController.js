@@ -1,3 +1,4 @@
+import cartModel from "../../models/cartModel.js";
 const carts = [
 	{
 		"cart_id" : 1,
@@ -15,16 +16,38 @@ const carts = [
 		"cart_closed" : 0
 	}
 ]
-async function getAll(){
+/*async function getAll(){
     return {data:carts}
+}*/
+async function getAll(){
+    try {
+        const carts = await cartModel.findAll()
+        return {data:carts}
+    }
+    catch (error) {
+        console.error(error);
+        return { error: error };
+    }
 }
 
-async function getById(id){
+/*async function getById(id){
     const cart = carts.find(cart => cart.cart_id === id);
     if(!cart){
         return {error:"El carta no existe"};
     }
     return {data:cart};
+}*/
+async function getById(id){
+    try {
+        const user = await cartModel.findByPk(id);
+        if (!user) {
+            return { error: "El carrito no existe"};
+        }
+        return {data: user};
+    } catch (error) {
+        console.error(error);
+        return { error };
+    }
 }
 
 async function create(cartData){
