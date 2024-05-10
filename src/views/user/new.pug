@@ -12,6 +12,10 @@ block content
             div(class="input_form")
                 label(for="user_city") Ciudad 
                 input(id="user_city" type="text" name="user_city")
+            //- De momento el rol es automático y asigna Cliente a todos
+            div(class="input_form")
+                label(for="user_rol")
+                input(id="user_rol" type="hidden" name="user_rol" value="Cliente")
 
             button(class="crear_buttom" type="submit") Crear
 
