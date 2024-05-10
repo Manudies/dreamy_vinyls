@@ -1,70 +1,67 @@
-const genres = [
-	{
-		"id_genre" : 1,
-		"genre_name" : "Rock",
-	},
-    {
-		"id_genre" : 2,
-		"genre_name" : "Punk",
-	},
-    {
-		"id_genre" : 3,
-		"genre_name" : "Pop",
-	},
+import genreModel from "../../models/genreModel.js";
 
-]
 async function getAll(){
-    return {data:genres}
+    try {
+        const genres = await genreModel.findAll()
+        return{data:genres}
+    } catch (error) {
+        console.error(error);
+        return { error: error };
+    }
 }
 
 async function getById(id){
-    const genre = genres.find(genre => genre.id_genre === id);
-    if(!genre){
-        return {error:"El género no existe (lit)"};
+    try {
+        const genre = await genreModel.findByPk(id);
+        if (!genre) {
+            return {error: "El genero no existe"};
+        }
+        return {data:genre}
+    } catch (error) {
+        console.error(error);
+        return { error };
     }
-    return {data:genre};
 }
 
 async function create(genreData){
-    const {genre_name} = genreData;
-    // get max genre_id from genres
-    if(!genre_name){
-        return {error:"Los generos deben tener nombre!"};
+    try {
+        const newGenre = await genreModel.create(genreData);
+        return  {data:newGenre}
+    } catch (error) {
+        console.error(error);
+        return {error}
     }
-    const maxId = Math.max(...genres.map(genre => genre.id_genre));
-    const newId= maxId + 1;
-    const newGenre = {
-        id_genre:newId,
-        genre_name
-        
-    };
-    console.log(newGenre);
-    genres.push(newGenre);
-    return {data:newGenre};
 }
 
 async function update(id,genreData){
-    const {genre_name} =genreData;
-    const genre = genres.find(genre=>genre.id_genre===id);
-    if(!genre){
-        return {error:"No se puede modificar un género que no existe, mazapan!"};
+    try {
+        if(genreData.genre_name===""){
+        delete genreData.genre_name;
+        }
+        const newGenre = await genreModel.update(genreData,
+        {
+            where:
+            {
+                id_genre:id
+            } 
+        }
+    );
+    return {data:newGenre}
+    } catch (error) {
+        console.error(error);
+        return {error}  
     }
-    if(genre_name){
-        genre.genre_name = genre_name;
-
-    }
-  
-
-    return {data:genre};
 }
 
 async function remove(id){
-    const genreIndex = genres.findIndex(genre=>genre.id_genre===id);
-    if(genreIndex === -1){
-        return {error:"no se pueden borrar género que no existen"}
+    try {
+        const genre = await genreModel.findByPk(id);
+        await genre.destroy();
+        return {data:genre}
+    } catch (error) {
+        console.error(error);
+        return{error}
     }
-    const deletedGenre = genres.splice(genreIndex,1);
-    return {data:deletedGenre};
 }
 
 export {
