@@ -17,6 +17,15 @@ function isTokenCorrect(req,res,next){
 
 }
 
-export{isTokenCorrect};
+function hasSession(req,res,next){
+    const user = req.session.user;
+    console.log("session user",req.session);
+    if(!user){
+        return res.redirect("/login");
+    }
+    next();
+}
 
-export default {isTokenCorrect};
+export{isTokenCorrect,hasSession};
+
+export default {isTokenCorrect,hasSession};

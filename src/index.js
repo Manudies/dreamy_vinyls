@@ -12,7 +12,7 @@ const sessionData = {
     cookie:{
         secure:false,
         maxAge: 60 * 60 *1000
-    }
+    } 
 }
 
 const app = express();
