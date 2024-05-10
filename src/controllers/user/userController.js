@@ -27,7 +27,8 @@ async function getById(id){
 async function create(userData){
     try {
         const newUser = await userModel.create(userData);
-        console.log("newUser", newUser)
+        // console.log("newUser", newUser);
+        return {data:newUser}
     } catch (error) {
         console.error(error);
         return {error}
@@ -56,12 +57,13 @@ async function update(id,userData){
 
 async function remove(id){
     try {
-        const result = await userModel.remove(id);
-        return {data:result}
-        
+        const user = await userModel.findByPk(id);
+        await user.destroy();
+        return {data:user};
     } 
     catch (error) {
         console.error(error);
+        return{error}
     }
 }
 
