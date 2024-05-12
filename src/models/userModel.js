@@ -19,8 +19,7 @@ const userModel = sequelize.define("user",
             type:DataTypes.STRING(45),
         },
         user_rol:{
-            type:DataTypes.STRING(45),
-            allowNull:false
+            type:DataTypes.STRING(45)
         }
 
     }

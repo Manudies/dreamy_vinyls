@@ -1,11 +1,22 @@
 import express from "express";
 import dotenv from "dotenv";
+import session from "express-session";
 import router from "./routes/router.js";
 
 dotenv.config();
 
-const app = express();
+const sessionData = {
+    secret:process.env.SESSION_SECRET,
+    resave:true,
+    saveUninitialized:true,
+    cookie:{
+        secure:false,
+        maxAge: 60 * 60 *1000
+    } 
+}
 
+const app = express();
+app.use(session(sessionData));
 app.use(express.static("public")); // permite mostrar archivos en la carpeta public
 
 app.set("views","./src/views");

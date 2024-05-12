@@ -1,5 +1,41 @@
 import userController from "./userController.js";
 
+async function registerForm(req,res){
+    res.render("user/register");
+}
+
+async function register(req,res) {
+    const {user_name,password,passwordRepeat} = req.body;
+    const {error,data} = await userController.register(user_name,password,passwordRepeat);
+    if(error){
+        res.render("user/register",{error});
+    }
+    else{
+        res.redirect("/login");
+    }
+}
+
+async function loginForm(req,res){
+    res.render("user/login");
+}
+
+async function login(req,res) {
+    const {user_name,password} = req.body;
+    const {error,data} = await userController.login(user_name,password);
+    if(error){
+        res.render("user/login",{error});
+    }
+    else{
+        req.session.user = data;
+        res.redirect("/vinyl");
+    }
+}
+
+async function logout(req,res){
+    req.session.user = null;
+    res.redirect("/artist");
+}
+
 async function getAll(req,res){
     const {error,data} = await userController.getAll();
     res.render("user/list",{error,data});
@@ -45,6 +81,11 @@ async function remove(req,res){
 
 
 export {
+    register,
+    registerForm,
+    login,
+    loginForm,
+    logout,
     getAll,
     getById,
     create,
@@ -55,6 +96,11 @@ export {
 }
 
 export default {
+    register,
+    registerForm,
+    login,
+    loginForm,
+    logout,
     getAll,
     getById,
     create,

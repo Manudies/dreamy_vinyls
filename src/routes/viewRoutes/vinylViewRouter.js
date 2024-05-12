@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import vinylViewController from "../../controllers/vinyl/vinylViewController.js";
+import { hasSession } from "../../controllers/middlewares/authMiddleware.js";
 
 const router = Router();
 
