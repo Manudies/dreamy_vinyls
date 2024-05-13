@@ -40,16 +40,19 @@ async function getByUser(user_name){
 
 async function create(userData){
     try {
+        // Encripta la contraseña antes de crear el usuario
+        const hash = await bcrypt.hash(userData.user_password, 10);
+        userData.user_password = hash;
+
         const newUser = await userModel.create(userData);
-        // console.log("newUser", newUser);
-        return {data:newUser}
+        return { data: newUser };
     } catch (error) {
         console.error(error);
-        return {error}
+        return { error };
     }
 }
 
-async function register(user_name,password,passwordRepeat, user_city){
+async function register(user_name,password,passwordRepeat,user_city){
     try {
         if(!user_name || !password || !passwordRepeat){
             return {error:"falta usuario o contraseña"};
@@ -98,25 +101,28 @@ async function login(user_name,password){
         return {error:"Ha habido un error en el login"}
     }
 }
-async function update(id,userData){
+
+async function update(id, userData) {
     try {
-        if(userData.user_name ===""){
-            delete userData.user_name;
+        if (userData.user_password) {
+            const hash = await bcrypt.hash(userData.user_password, 10);
+            userData.user_password = hash;
         }
-        const newUser = await userModel.update(userData,
-        {
-            where:
-            {
-                id_user:id
+
+        const newUser = await userModel.update(userData, {
+            where: {
+                id_user: id
             }
-        }
-    );
-    return {data:newUser};
+        });
+
+        // Retorna el nuevo usuario actualizado
+        return { data: newUser };
     } catch (error) {
         console.error(error);
-        return {error}  
+        return { error: "Ha ocurrido un error al actualizar el usuario" };
     }
 }
+
 
 async function remove(id){
     try {
