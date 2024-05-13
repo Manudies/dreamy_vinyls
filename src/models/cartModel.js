@@ -21,5 +21,8 @@ const cartModel = sequelize.define("cart",
         },
     }
 )
+cartModel.belongsToMany(vinylModel, {as: "carrito",through:"carrito_has_vinilos",foreignKey:"id_cart"});
+
+cartModel.belongsTo(userModel, {as: "user", foreignKey: 'id_user' });
 
 export default cartModel;

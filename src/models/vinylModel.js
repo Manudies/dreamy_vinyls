@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
+import cartModel from "./cartModel.js";
 
 
 
@@ -28,7 +29,12 @@ const vinylModel = sequelize.define("vinyl",
     }
 )
 
-// vinylModel.belongsToMany(cartModel,
+
+vinylModel.belongsTo(genreModel,{as: "genero",foreignKey:"id_genre"});
+vinylModel.belongsToMany(cartModel, { as: "carrito", through: "carrito_has_vinilos" });
+
+
+// vinylModel.belongsToMany(genre,
 //     {
 //         through:"cart_has_vinyl",
 //         as:"carts",
@@ -40,7 +46,6 @@ const vinylModel = sequelize.define("vinyl",
 //         through:"cart_has_vinyl",
 //         as:"vinyls",
 //         foreignKey:"vinyl_id"
-//     }
-// );
+//     });
 
 export default vinylModel;

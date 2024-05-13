@@ -2,7 +2,7 @@ import vinylModel from "../../models/vinylModel.js";
 
 async function getAll() {
     try {
-        const vinyls = await vinylModel.findAll();
+        const vinyls = await vinylModel.findAll({include:["genero","carrito"]});
         return { data: vinyls };
     }
     catch (error) {
