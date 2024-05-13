@@ -4,7 +4,7 @@ block content
     h1 Login
     if error 
         p(class="error")=error
-    form(action="/login", method="post") 
+    form(action="/user/login", method="post") 
         label(for="user_name") Nombre de usuario
         input#user_name(type="text", name="user_name") 
         label(for="password") contraseña
