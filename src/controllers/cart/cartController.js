@@ -41,6 +41,7 @@ async function update(id,cartData){
         if(cartData.cart_id==""){
             delete cartData.cart_id
         }
+        console.log("Esto es cartData: ", cartData, id)
         const newCart = await cartModel.update(cartData, 
             {
             where:
@@ -60,7 +61,7 @@ async function update(id,cartData){
 
 async function remove(id){
     try {
-        console.log("El id del carrito a borrar es: ", id)
+        // console.log("El id del carrito a borrar es: ", id)
         const cart = await cartModel.findByPk(id);
         await cart.destroy();
         return {data:cart};

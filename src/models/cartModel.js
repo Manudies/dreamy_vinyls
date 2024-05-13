@@ -17,7 +17,7 @@ const cartModel = sequelize.define("cart",
         cart_closed: {
             type:DataTypes.BOOLEAN,
             allowNull:false,
-            defaultValue:true
+            defaultValue:false
         },
     }
 )
