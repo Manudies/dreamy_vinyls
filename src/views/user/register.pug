@@ -1,15 +1,16 @@
 extends ../layout
 
 block content 
-    h1 Register
+    h1(class="h1_register") Register
     if error 
         p(class="error")=error
-    form(action="/user/register", method="post") 
+
+    form(class="register_form" action="/user/register", method="post") 
         label(for="user_name") Nombre de usuario
         input#user_name(type="text", name="user_name") 
-        label(for="password") contraseña
+        label(for="password") Contraseña
         input#password(type="password", name="password") 
-        label(for="passwordRepeat") repetir contraseña
+        label(for="passwordRepeat") Repetir contraseña
         input#passwordRepeat(type="password", name="passwordRepeat") 
         label(for="user_city") Ciudad
         input#passwordRepeat(type="text", name="user_city") 
