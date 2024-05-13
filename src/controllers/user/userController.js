@@ -49,7 +49,7 @@ async function create(userData){
     }
 }
 
-async function register(user_name,password,passwordRepeat){
+async function register(user_name,password,passwordRepeat, user_city){
     try {
         if(!user_name || !password || !passwordRepeat){
             return {error:"falta usuario o contraseña"};
@@ -65,7 +65,8 @@ async function register(user_name,password,passwordRepeat){
         const hash = await bcrypt.hash(password,10);
         const userData = {
             user_name,
-            password:hash
+            user_password:hash,
+            user_city
         }
         const newUser = await create(userData);
         return {data:newUser};
