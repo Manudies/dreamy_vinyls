@@ -1,78 +1,77 @@
-const carts = [
-	{
-		"cart_id" : 1,
-		"id_user" : 1,
-		"cart_closed" : 1
-	},
-	{
-		"cart_id" : 2,
-		"id_user" : 2,
-		"cart_closed" : 0
-	},
-	{
-		"cart_id" : 3,
-		"id_user" : 3,
-		"cart_closed" : 0
-	}
-]
+import cartModel from "../../models/cartModel.js";
+
 async function getAll(){
-    return {data:carts}
+    try {
+        const carts = await cartModel.findAll()
+        return {data:carts}
+    }
+    catch (error) {
+        console.error(error);
+        return { error: error };
+    }
 }
 
 async function getById(id){
-    const cart = carts.find(cart => cart.cart_id === id);
-    if(!cart){
-        return {error:"El carta no existe"};
+    try {
+        const user = await cartModel.findByPk(id);
+        if (!user) {
+            return { error: "El carrito no existe"};
+        }
+        return {data: user};
+    } catch (error) {
+        console.error(error);
+        return {error};
     }
-    return {data:cart};
 }
 
 async function create(cartData){
-    const {id_cart,cart_closed,id_user} = cartData;
-    // get max cart_id from carts
-    if(!id_user ){
-        return {error:"Los carritos son para usuarios!"};
-    }
-    const maxId = Math.max(...carts.map(cart => cart.cart_id));
-    const newId= maxId + 1;
-    const newcart = {
-        cart_id:newId,
-        id_user,
-        cart_closed
-
-    };
-    carts.push(newcart);
-    return {data:newcart};
+    try {
+        const newcart= await cartModel.create(cartData);
+        // if(cartData.cart_closed == "on"){
+        //     cartData.cart_closed = 
+        // }
+        return {data:newcart}
+    } catch (error) {
+        console.error(error);
+        return {error}
+    }   
 }
-
 async function update(id,cartData){
-    const {id_cart,cart_closed,id_user} = cartData;
-    const cart = carts.find(cart=>cart.cart_id===id);
-    if(!cart){
-        return {error:"No se puede modificar un carta que no existe, mazapan!"};
+    try {
+        if(cartData.cart_id==""){
+            delete cartData.cart_id
+        }
+        console.log("Esto es cartData: ", cartData, id)
+        const newCart = await cartModel.update(cartData, 
+            {
+            where:
+            {
+                id_cart:id
+            }
+        }
+    );
+        return{data:newCart};
+
+    } catch (error) {
+        console.error(error);
+        return {error}  
     }
-    if(id_user){
-        cart.id_user = id_user;
-    }
-    
-    if(cart_closed !== null && cart_closed!== undefined){
-        cart.cart_closed=cart_closed
-        console.log("cart_closer= "+cart.cart_closed)
-    }
-    return {data:cart};
+
 }
-
-
-
 
 async function remove(id){
-    const cartIndex = carts.findIndex(cart=>cart.cart_id===id);
-    if(cartIndex === -1){
-        return {error:"no se pueden borrar cartas que no existen"}
+    try {
+        // console.log("El id del carrito a borrar es: ", id)
+        const cart = await cartModel.findByPk(id);
+        await cart.destroy();
+        return {data:cart};
+    } 
+    catch (error) {
+        console.error(error);
+        return{error}
     }
-    const deletedcart = carts.splice(cartIndex,1);
-    return {data:deletedcart};
 }
+
 
 export {
     getAll,

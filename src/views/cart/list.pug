@@ -7,11 +7,12 @@ block content
     if data
         ul
             each cart in data 
-                li
-                    a(href="/cart/"+cart.cart_id)= cart.id_user
-                    a(href=`/cart/${cart.cart_id}/update`) 
+                li  
+                    p(cart.id_cart)= "Carrito número: "+ cart.id_cart
+                    a(href="/cart/"+cart.id_cart)="El Id del dueño del carrito es: "+ cart.id_user
+                    a(href=`/cart/${cart.id_cart}/update`) 
                         button Editar
-                    form(action=`/cart/${cart.cart_id}/remove`, method="post") 
+                    form(action=`/cart/${cart.id_cart}/remove`, method="post") 
                         button(type="submit") Borrar
     a(href="/cart/new")
         button Nuevo

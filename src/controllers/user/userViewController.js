@@ -11,7 +11,7 @@ async function register(req,res) {
         res.render("user/register",{error});
     }
     else{
-        res.redirect("/login");
+        res.redirect("/user/login");
     }
 }
 
