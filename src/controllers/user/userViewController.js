@@ -5,8 +5,8 @@ async function registerForm(req,res){
 }
 
 async function register(req,res) {
-    const {user_name,password,passwordRepeat} = req.body;
-    const {error,data} = await userController.register(user_name,password,passwordRepeat);
+    const {user_name,password,passwordRepeat, user_city} = req.body;
+    const {error,data} = await userController.register(user_name,password,passwordRepeat, user_city);
     if(error){
         res.render("user/register",{error});
     }
