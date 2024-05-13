@@ -25,7 +25,7 @@ const userModel = sequelize.define("user",
     }
 )
 
-userModel.hasMany(cartModel, {as: "user", foreignKey: 'id_user' });
+userModel.hasMany(cartModel, { as: "carritos", foreignKey: 'id_user' });
 
 /* //Al consultar un usuario, podrías acceder a su carrito así:
 User.findByPk(1, { include: Carrito }).then(user => {
