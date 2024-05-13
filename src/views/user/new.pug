@@ -2,20 +2,33 @@ extends ../layout
 
 block content
 
-        form(class="new_form" action="/user", method="post") 
-            div(class="input_form")
-                label(for="user_name") Nombre 
-                input(id="user_name" type="text" name="user_name") 
-            div(class="input_form")
-                label(for="user_password") Contraseña 
-                input(id="user_password" type="text" name="user_password")
-            div(class="input_form")
-                label(for="user_city") Ciudad 
-                input(id="user_city" type="text" name="user_city")
-            //- De momento el rol es automático y asigna Cliente a todos
-            div(class="input_form")
-                label(for="user_rol")
-                input(id="user_rol" type="hidden" name="user_rol" value="Cliente")
+    form(class="new_form" action="/user", method="post") 
+        div(class="input_form")
+            label(for="user_name") Nombre 
+            input(id="user_name" type="text" name="user_name") 
+        div(class="input_form")
+            label(for="user_password") Contraseña 
+            input(id="user_password" type="password" name="user_password")
+            button#toggle_password(type="button") Ver contraseña
+        div(class="input_form")
+            label(for="user_city") Ciudad 
+            input(id="user_city" type="text" name="user_city")
+        //- De momento el rol es automático y asigna Cliente a todos
+        div(class="input_form")
+            label(for="user_rol")
+            input(id="user_rol" type="hidden" name="user_rol" value="Cliente")
 
-            button(class="crear_buttom" type="submit") Crear
+        button(class="crear_buttom" type="submit") Crear
+
+    script.
+        document.getElementById("toggle_password").addEventListener("click", function() {
+            var passwordInput = document.getElementById("user_password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                this.textContent = "Ocultar contraseña";
+            } else {
+                passwordInput.type = "password";
+                this.textContent = "Ver contraseña";
+            }
+        });
 

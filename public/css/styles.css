@@ -53,9 +53,9 @@
     margin-left: 10px;
 }
 
-#user_city{
+/* #user_city{
     margin-left: 10px;
-}
+} */
 
 .crear_buttom{
     width: 275px;
@@ -86,5 +86,31 @@
 .register_form button{
     margin: auto;
     margin-top: 20px;
-    width: 200px;
+    width: 190px;
+}
+
+.register_form input{
+    padding: 5px 0px;
+}
+
+#password{
+    height: 100%;
+}
+.contenedor_contraseña{
+    display: flex;
+    flex-wrap: wrap;
+}
+.contenedor_contraseña input{
+    width: 90%;
+    padding: 5px 0px;
+}
+
+.contenedor_contraseña button{
+    width: 10%;
+    height: 30px;
+    margin-top: 0px;
+    padding: 1px;
+    font-size: 1.2rem;
+    align-items: start;
+
 }

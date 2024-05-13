@@ -9,9 +9,23 @@ block content
         label(for="user_name") Nombre de usuario
         input#user_name(type="text", name="user_name") 
         label(for="password") Contraseña
-        input#password(type="password", name="password") 
+        div(class="contenedor_contraseña") 
+            input#password(type="password", name="password") 
+            button#toggle_password(type="button") 🕶️
         label(for="passwordRepeat") Repetir contraseña
         input#passwordRepeat(type="password", name="passwordRepeat") 
         label(for="user_city") Ciudad
-        input#passwordRepeat(type="text", name="user_city") 
+        input#user_city(type="text", name="user_city") 
         button(type="submit") Register
+
+    script.
+        document.getElementById("toggle_password").addEventListener("click", function() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                this.textContent = "👓";
+            } else {
+                passwordInput.type = "password";
+                this.textContent = "🕶️";
+            }
+        });
