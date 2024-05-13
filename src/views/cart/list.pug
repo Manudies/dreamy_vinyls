@@ -8,8 +8,8 @@ block content
         ul
             each cart in data 
                 li  
-                    p(cart.id_cart)= "El Id del CARRITO es: "+ cart.id_cart
-                    a(href="/cart/"+cart.id_cart)="El Id del USUARIO es: "+ cart.id_user
+                    p(cart.id_cart)= "Carrito número: "+ cart.id_cart
+                    a(href="/cart/"+cart.id_cart)="El Id del dueño del carrito es: "+ cart.id_user
                     a(href=`/cart/${cart.id_cart}/update`) 
                         button Editar
                     form(action=`/cart/${cart.id_cart}/remove`, method="post") 
