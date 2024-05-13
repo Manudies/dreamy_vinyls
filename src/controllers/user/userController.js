@@ -85,7 +85,7 @@ async function login(user_name,password){
         if(!oldUser){
             return {error:"la combinación de usuario y contraseña es errónea"};
         }
-        const isPasswordCorrect = await bcrypt.compare(password,oldUser.password);
+        const isPasswordCorrect = await bcrypt.compare(password,oldUser.user_password);
         if(isPasswordCorrect){
             const token = jwt.sign({id:oldUser.id_user,user_name:oldUser.user_name},process.env.JWT_SECRET,{expiresIn: 60 * 60})
             return {data:"El usuario se ha logueado correctamente",token};
