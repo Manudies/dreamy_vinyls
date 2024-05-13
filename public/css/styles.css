@@ -1,3 +1,25 @@
+.home_img{
+    display: flex;
+    width: 400px;
+    margin:auto;
+}
+
+.h1_home{
+    display: flex;
+    width: 500px;
+    margin:auto;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+.p_register{
+    width: 400px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    font-size: 1.3rem;
+    padding-bottom: 25px;
+}
+
 .user_list_data{
     background-color: aquamarine;
     list-style: none;
@@ -23,9 +45,9 @@
     justify-content: space-between;
     padding-top: 10px;
 }
-#user_name{
+/* #user_name{
     margin-left: 10px;
-}
+} */
 
 #user_password{
     margin-left: 10px;
@@ -39,4 +61,30 @@
     width: 275px;
     margin: 25px;
     justify-self: start;
+}
+
+.h1_register{
+    display: flex;
+    width: 400px;
+    margin:auto;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.register_form{
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+}
+
+.register_form label{
+    padding: 5px 0px;
+}
+
+.register_form button{
+    margin: auto;
+    margin-top: 20px;
+    width: 200px;
 }

@@ -1,12 +1,12 @@
 extends ../layout
 
 block content 
-    h1 Login
+    h1(class="h1_register") Login
     if error 
         p(class="error")=error
-    form(action="/user/login", method="post") 
+    form(class="register_form" action="/user/login", method="post") 
         label(for="user_name") Nombre de usuario
         input#user_name(type="text", name="user_name") 
-        label(for="password") contraseña
+        label(for="password") Contraseña
         input#password(type="password", name="password") 
         button(type="submit") Login
