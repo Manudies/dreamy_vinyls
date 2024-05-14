@@ -33,7 +33,7 @@ cartModel.belongsToMany(vinylModel, {
     otherKey: "id_vinyl" ,
 });
 
-cartModel.belongsTo(userModel, {
+cartModel.hasMany(userModel, { //belongsTo
     as: "user", 
     foreignKey: 'id_user' 
 });
