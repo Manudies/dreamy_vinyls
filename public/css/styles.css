@@ -1,3 +1,25 @@
+.navbar{
+    border-bottom: solid 1px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.nav-elements{
+    list-style: none;
+    display: flex;
+}
+.nav-link a{
+    font-size: 1.2rem;
+    padding:10px 10px;
+    text-decoration: none;
+    color: black;
+}
+.nav-link a:hover{
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
 .home_img{
     display: flex;
     width: 400px;
@@ -53,9 +75,9 @@
     margin-left: 10px;
 }
 
-#user_city{
+/* #user_city{
     margin-left: 10px;
-}
+} */
 
 .crear_buttom{
     width: 275px;
@@ -72,6 +94,10 @@
 }
 
 .register_form{
+    padding: 10px;
+    border:black 2px solid;
+    border-radius: 10px;
+    box-shadow: 5px 5px black;
     width: 370px;
     display: flex;
     flex-direction: column;
@@ -86,5 +112,34 @@
 .register_form button{
     margin: auto;
     margin-top: 20px;
-    width: 200px;
+    width: 190px;
+}
+
+.register_form input{
+    padding: 5px 0px;
+    padding-left: 10px;
+
+}
+
+#password{
+    height: 100%;
+    padding-left: 10px;
+}
+.contenedor_contraseña{
+    display: flex;
+    flex-wrap: wrap;
+}
+.contenedor_contraseña input{
+    width: 90%;
+    padding: 5px 0px;
+}
+
+.contenedor_contraseña button{
+    width: 10%;
+    height: 30px;
+    margin-top: 0px;
+    padding: 1px;
+    font-size: 1.2rem;
+    align-items: start;
+
 }
