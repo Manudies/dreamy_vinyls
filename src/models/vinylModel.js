@@ -1,9 +1,8 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
 
-/* import cartModel from "./cartModel.js";
-import genreModel from './genreModel.js'; */
-
+/* import cartModel from "./cartModel.js"; */
+/*  import genreModel from './genreModel.js'; */
 
 const vinylModel = sequelize.define("vinyl",
     {
@@ -34,15 +33,15 @@ const vinylModel = sequelize.define("vinyl",
 /* vinylModel.belongsToMany(genreModel,{as: "genero",foreignKey:"id_genre"});
 vinylModel.belongsToMany(cartModel, { as: "carrito", through: "carrito_has_vinilos", foreignKey:"id_vinyl" }); */
 
-/* vinylModel.belongsToMany(genreModel, {
+/* vinylModel.hasMany(genreModel, {
     as: "genero", 
-    foreignKey: "id_genre" /
-});
+    foreignKey: "id_genre" 
+}); */
 
-vinylModel.belongsToMany(cartModel, {
+/* vinylModel.belongsToMany(cartModel, {
     as: "carrito", 
     through: "carrito_has_vinilos", 
     foreignKey: "id_vinyl" 
-});
- */
+}); */
+ 
 export default vinylModel;
