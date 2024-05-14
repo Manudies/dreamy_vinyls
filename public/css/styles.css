@@ -106,10 +106,13 @@
 
 .register_form input{
     padding: 5px 0px;
+    padding-left: 10px;
+
 }
 
 #password{
     height: 100%;
+    padding-left: 10px;
 }
 .contenedor_contraseña{
     display: flex;
