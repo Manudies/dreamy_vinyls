@@ -1,6 +1,9 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
 
+import vinylModel from './vinylModel.js';
+import userModel from './userModel.js';
+
 
 const cartModel = sequelize.define("cart",
     {
@@ -21,5 +24,18 @@ const cartModel = sequelize.define("cart",
         },
     }
 )
+
+
+cartModel.belongsToMany(vinylModel, {
+    as: "vinilos", 
+    through: "carrito_has_vinilos",
+    foreignKey: "id_cart", 
+    otherKey: "id_vinyl" ,
+});
+
+cartModel.hasMany(userModel, { //belongsTo
+    as: "user", 
+    foreignKey: 'id_user' 
+});
 
 export default cartModel;
