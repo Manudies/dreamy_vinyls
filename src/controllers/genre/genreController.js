@@ -2,7 +2,7 @@ import genreModel from "../../models/genreModel.js";
 
 async function getAll(){
     try {
-        const genres = await genreModel.findAll({include:["genre"]})
+        const genres = await genreModel.findAll({include:["vinilos"]})
         return{data:genres}
     } catch (error) {
         console.error(error);
