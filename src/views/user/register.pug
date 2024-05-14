@@ -7,15 +7,15 @@ block content
 
     form(class="register_form" action="/user/register", method="post") 
         label(for="user_name") Nombre de usuario
-        input#user_name(type="text", name="user_name") 
+        input#user_name(type="text", name="user_name" placeholder="Robe Iniesta") 
         label(for="password") Contraseña
         div(class="contenedor_contraseña") 
-            input#password(type="password", name="password") 
+            input#password(type="password", name="password" placeholder="Introduce contraseña") 
             button#toggle_password(type="button") 🕶️
         label(for="passwordRepeat") Repetir contraseña
-        input#passwordRepeat(type="password", name="passwordRepeat") 
+        input#passwordRepeat(type="password", name="passwordRepeat" placeholder="Repite contraseña") 
         label(for="user_city") Ciudad
-        input#user_city(type="text", name="user_city") 
+        input#user_city(type="text", name="user_city" placeholder="Plasencia") 
         button(type="submit") Register
 
     script.
