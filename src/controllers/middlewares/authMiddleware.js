@@ -29,7 +29,7 @@ function hasSession(req,res,next){
 
 //funcion para comprobar si es administrador
 function isAdmin(req,res,next){
-    const user = req.user;
+    const user = req.session.user;
     if(!user || user.user_rol !== "admin"){
         return res.status(403).json({ error: "Acceso prohibido para usuarios no administradores" });
     }

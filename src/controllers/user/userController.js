@@ -65,10 +65,11 @@ async function register(user_name,password,passwordRepeat,user_city){
         if(oldUser){
             return {error:"el usuario ya existe"};
         }
-        const hash = await bcrypt.hash(password,10);
+       /*  const hash = await bcrypt.hash(password,10);
+        console.log("hasssss",hash); */
         const userData = {
             user_name,
-            user_password:hash,
+            user_password:password,
             user_city
         }
         const newUser = await create(userData);
@@ -88,10 +89,15 @@ async function login(user_name,password){
         if(!oldUser){
             return {error:"la combinación de usuario y contraseña es errónea"};
         }
+        console.log("password",password,oldUser.user_password);
         const isPasswordCorrect = await bcrypt.compare(password,oldUser.user_password);
         if(isPasswordCorrect){
             const token = jwt.sign({id:oldUser.id_user,user_name:oldUser.user_name},process.env.JWT_SECRET,{expiresIn: 60 * 60})
-            return {data:"El usuario se ha logueado correctamente",token};
+            const user = {
+                id_user:oldUser.id_user,
+                user_rol:oldUser.user_rol
+            }
+            return {token, data:user};
         }
         else{
             return {error:"la combinación de usuario y contraseña es errónea"}
