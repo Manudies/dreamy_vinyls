@@ -26,6 +26,7 @@
     "express-session": "^1.18.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.7",
+    "node": "^20.13.1",
     "pug": "^3.0.2",
     "sequelize": "^6.37.3"
   },

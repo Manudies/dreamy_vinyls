@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
+
 import vinylModel from "./vinylModel.js";
 
 // import bandModel from "./bandModel.js";
@@ -18,8 +19,8 @@ const genreModel = sequelize.define("genre",
         }
     }
 )
-
-genreModel.hasMany(vinylModel,{as: "genero",foreignKey:"id_genre"})
+/* 
+genreModel.hasMany(vinylModel,{as: "genero",foreignKey:"id_genre"}) */
 
 // artistModel.belongsToMany(bandModel,
 //     {

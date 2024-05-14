@@ -1,6 +1,8 @@
 import { DataTypes } from "sequelize"
 import sequelize from "../config/sequelize.js"
 
+import cartModel from './cartModel.js'; 
+
 const userModel = sequelize.define("user", 
     {
         id_user:{
@@ -25,7 +27,7 @@ const userModel = sequelize.define("user",
     }
 )
 
-userModel.hasMany(cartModel, { as: "carritos", foreignKey: 'id_user' });
+/* userModel.hasMany(cartModel, { as: "carritos", foreignKey: 'id_user' }); */
 
 /* //Al consultar un usuario, podrías acceder a su carrito así:
 User.findByPk(1, { include: Carrito }).then(user => {
