@@ -30,18 +30,16 @@ const vinylModel = sequelize.define("vinyl",
 )
 
 
-/* vinylModel.belongsToMany(genreModel,{as: "genero",foreignKey:"id_genre"});
-vinylModel.belongsToMany(cartModel, { as: "carrito", through: "carrito_has_vinilos", foreignKey:"id_vinyl" }); */
 
 vinylModel.hasMany(genreModel, {
     as: "genero", 
     foreignKey: "id_genre" 
 });
 
-/* vinylModel.belongsToMany(cartModel, {
-    as: "carrito", 
+/* vinylModel.belongsToMany(cartModel, { //prueba para poner los vinilos en el carrito
+    as: "carritos", 
     through: "carrito_has_vinilos", 
     foreignKey: "id_vinyl" 
 }); */
- 
+
 export default vinylModel;
