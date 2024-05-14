@@ -8,6 +8,7 @@ function isTokenCorrect(req,res,next){
         }
         const token =authorization.split("Bearer ")[1];
         const decoded = jwt.verify(token,process.env.JWT_SECRET);
+        req.user = decoded; //linea añadida en la prueba
         console.log(decoded)
         next();
     } catch (error) {
@@ -26,6 +27,16 @@ function hasSession(req,res,next){
     next();
 }
 
-export{isTokenCorrect,hasSession};
+//funcion para comprobar si es administrador
+function isAdmin(req,res,next){
+    const user = req.session.user;
+    if(!user || user.user_rol !== "admin"){
+        return res.status(403).json({ error: "Acceso prohibido para usuarios no administradores" });
+    }
+    next()
+}
 
-export default {isTokenCorrect,hasSession};
+
+export{isTokenCorrect,hasSession,isAdmin};
+
+export default {isTokenCorrect,hasSession,isAdmin};

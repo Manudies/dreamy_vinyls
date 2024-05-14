@@ -27,6 +27,7 @@ async function login(req,res) {
     }
     else{
         req.session.user = data;
+        console.log("datos de usuario",req.session.user)
         res.redirect("/vinyl");
     }
 }
