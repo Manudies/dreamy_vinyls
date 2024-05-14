@@ -15,7 +15,7 @@ const userModel = sequelize.define("user",
             type:DataTypes.STRING(45),
         },
         user_password:{
-            type:DataTypes.STRING(45),
+            type:DataTypes.STRING(100),
         },
         user_city:{
             type:DataTypes.STRING(45),
