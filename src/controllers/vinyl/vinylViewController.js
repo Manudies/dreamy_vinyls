@@ -7,7 +7,6 @@ async function getAll(req,res){
 
 async function getById(req,res){
     const id = parseInt(req.params.id);
-    console.log("id",id);
     const{error,data} = await vinylController.getById(id)
     res.render("vinyl/show",{error,vinyl:data});
 }

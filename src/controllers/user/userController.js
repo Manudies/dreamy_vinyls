@@ -39,6 +39,7 @@ async function getByUser(user_name){
 
 async function create(userData){
     try {
+        //TODO: Se deberia comprobar si el usuario existe
         // Encripta la contraseña antes de crear el usuario
         const hash = await bcrypt.hash(userData.user_password, 10);
         userData.user_password = hash;
@@ -60,7 +61,6 @@ async function register(user_name,password,passwordRepeat,user_city){
             return {error:"las contraseñas no coinciden"};
         }
         const {data:oldUser} = await getByUser(user_name);
-        console.log("old user",oldUser)
         if(oldUser){
             return {error:"el usuario ya existe"};
         }
@@ -86,7 +86,6 @@ async function login(user_name,password){
         if(!oldUser){
             return {error:"la combinación de usuario y contraseña es errónea"};
         }
-        console.log("password",password,oldUser.user_password);
         const isPasswordCorrect = await bcrypt.compare(password,oldUser.user_password);
         if(isPasswordCorrect){
             const token = jwt.sign({id:oldUser.id_user,user_name:oldUser.user_name},process.env.JWT_SECRET,{expiresIn: 60 * 60})

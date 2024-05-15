@@ -4,7 +4,6 @@ import cartModel from "../../models/cartModel.js";
 async function getAll() {
     try {
         const vinyls = await vinylModel.findAll({include:["genero"]});
-        console.log ("vinilos",vinyls);
         return { data: vinyls };
     }
     catch (error) {
@@ -16,7 +15,6 @@ async function getAll() {
 async function getById(id) {
     try {
         const vinyl = await vinylModel.findByPk(id,{include:["genero"]});
-        console.log("vinilo",vinyl);
         if (!vinyl) {
             return { error: "El vinilo no existe" };
         }
@@ -31,7 +29,6 @@ async function getById(id) {
 async function create(vinylData) {
     try {
         const newVinyl = await vinylModel.create(vinylData);
-        console.log("new vinyl",newVinyl);
         return {data:newVinyl};
     } catch (error) {
         console.error(error);
