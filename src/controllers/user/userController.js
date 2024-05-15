@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 async function getAll(){
     try {
-        const users = await userModel.findAll({include:["carrito"]})
+        const users = await userModel.findAll()
         return {data:users}
     }
     catch (error) {
