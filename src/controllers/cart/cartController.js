@@ -38,7 +38,6 @@ async function update(id,cartData){
         if(cartData.cart_id==""){
             delete cartData.cart_id
         }
-        console.log("Esto es cartData: ", cartData, id)
         const newCart = await cartModel.update(cartData, 
             {
             where:

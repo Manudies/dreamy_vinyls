@@ -31,10 +31,7 @@ async function update(req,res){
     const id = parseInt(req.params.id);
     const {id_cart,id_user,cart_closed} = req.body;
     const real_cart_closed = cart_closed === "on" ? 1 : 0; 
-    console.log("real_cart_closed = ",real_cart_closed)
-    console.log("cart_closed = ",cart_closed,id)
     const {error,data} = await cartController.update(id,{id_cart,id_user,cart_closed:real_cart_closed});
-    console.log("le pasamos cart_closed = ", cart_closed)
     res.redirect("/cart");
 }
 
