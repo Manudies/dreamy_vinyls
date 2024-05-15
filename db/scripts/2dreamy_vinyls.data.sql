@@ -10,9 +10,9 @@ VALUES (1,"Nevermind","Nirvana",6,'1992-05-12',1),(2,"Ensalda de Coño","Tu Madr
 
 
 INSERT INTO user(id_user,user_name,user_password,user_city,user_rol) 
-VALUES(1,"Toñito",12345,"Sevilla","cliente"),(2,"Wenceslao",54321,"Vigo","cliente"),(3,"Gertru",09876,"Rosario","admin");
+VALUES (1,"admin","$2a$10$GPNUaohCwqzt2NJkhW.hSOT6AaCzTSdABf/AUixF40N.ThJ7YyMgW","Vinylcity","admin");
 
 
 
 SELECT * 
-FROM vinyl;
+FROM user;
