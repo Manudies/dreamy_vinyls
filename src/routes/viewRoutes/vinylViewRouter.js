@@ -1,19 +1,19 @@
 import { Router } from "express";
 
 import vinylViewController from "../../controllers/vinyl/vinylViewController.js";
-import { hasSession } from "../../controllers/middlewares/authMiddleware.js";
+import { isAdmin } from "../../controllers/middlewares/authMiddleware.js";
 
 const router = Router();
 
 
 router.get("/",vinylViewController.getAll);
-router.get("/new",vinylViewController.createForm);
-router.post("/",vinylViewController.create);
-router.get("/:id",vinylViewController.getById);
-router.get("/:id/update",vinylViewController.updateForm);
-router.post("/:id",vinylViewController.update);
+router.get("/new",isAdmin,vinylViewController.createForm);
+router.post("/",isAdmin,vinylViewController.create);
+router.get("/:id",isAdmin,vinylViewController.getById);
+router.get("/:id/update",isAdmin,vinylViewController.updateForm);
+router.post("/:id",isAdmin,vinylViewController.update);
 //router.delete("/:id",vinylViewController.remove);
-router.post("/:id/remove",vinylViewController.remove);
+router.post("/:id/remove",isAdmin,vinylViewController.remove);
 
 
 
