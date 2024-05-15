@@ -4,7 +4,6 @@ import artistViewController from "../../controllers/artist/artistViewController.
 
 const router = Router();
 
-
 router.get("/",artistViewController.getAll);
 router.get("/new",artistViewController.createForm);
 router.post("/",artistViewController.create);
@@ -13,7 +12,6 @@ router.get("/:id/update",artistViewController.updateForm);
 router.post("/:id",artistViewController.update);
 //router.delete("/:id",artistViewController.remove);
 router.post("/:id/remove",artistViewController.remove);
-
 
 
 export default router;

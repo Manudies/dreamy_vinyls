@@ -63,8 +63,16 @@
 }
 
 .user_list_data{
-    background-color: aquamarine;
+    width: 400px;
+    background-color: grey;
+    border-radius: 10px;
     list-style: none;
+}
+
+.user_list_data a{
+    font-size: 1.5rem;
+    text-decoration: none;
+    color:rgb(0, 0, 0)
 }
 
 .buttom_div{

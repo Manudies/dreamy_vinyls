@@ -2,7 +2,6 @@ import userModel from "../../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-
 async function getAll(){
     try {
         const users = await userModel.findAll()
@@ -65,8 +64,6 @@ async function register(user_name,password,passwordRepeat,user_city){
         if(oldUser){
             return {error:"el usuario ya existe"};
         }
-       /*  const hash = await bcrypt.hash(password,10);
-        console.log("hasssss",hash); */
         const userData = {
             user_name,
             user_password:password,
@@ -129,7 +126,6 @@ async function update(id, userData) {
     }
 }
 
-
 async function remove(id){
     try {
         const user = await userModel.findByPk(id);
@@ -152,7 +148,6 @@ export {
     update,
     remove
 };
-
 
 export default {
     getAll,
