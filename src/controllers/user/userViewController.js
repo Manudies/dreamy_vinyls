@@ -34,7 +34,7 @@ async function login(req,res) {
 
 async function logout(req,res){
     req.session.user = null;
-    res.redirect("/artist");
+    res.redirect("/home");
 }
 
 async function getAll(req,res){

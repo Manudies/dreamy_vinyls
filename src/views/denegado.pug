@@ -1,0 +1,9 @@
+extends ./layout
+
+block content
+    div(class="body_denegado")
+        h1 Denegado
+        if error 
+            p(class="error")= error
+            a(href="/user/login")
+                button Login

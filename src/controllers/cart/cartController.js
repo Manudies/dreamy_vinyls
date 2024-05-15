@@ -2,7 +2,7 @@ import cartModel from "../../models/cartModel.js";
 
 async function getAll(){
     try {
-        const carts = await cartModel.findAll()
+        const carts = await cartModel.findAll({include:["vinilos","user"]})
         return {data:carts}
     }
     catch (error) {
