@@ -31,7 +31,7 @@ function hasSession(req,res,next){
 function isAdmin(req,res,next){
     const user = req.session.user;
     if(!user || user.user_rol !== "admin"){
-        return res.status(403).json({ error: "Acceso prohibido para usuarios no administradores" });
+        return res.status(403).render( "denegado",{error: "Acceso prohibido para usuarios no administradores"});
     }
     next()
 }
