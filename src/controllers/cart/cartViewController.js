@@ -29,8 +29,6 @@ async function updateForm(req,res){
     res.render("cart/update",{error,cart});
 }
 
-
-
 async function update(req,res){
     const id = parseInt(req.params.id);
     const {id_cart,id_user,cart_closed} = req.body;
@@ -50,8 +48,6 @@ async function remove(req,res){
     const {error,data} = await cartController.remove(id);
     res.redirect("/cart");
 }
-
-
 
 export {
     getAll,

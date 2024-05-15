@@ -10,5 +10,7 @@ block content
         p Precio: #{vinyl.price}$
         if vinyl.relase_date 
             p Fecha de lanzamiento: #{vinyl.relase_date}
+        form(action='/vinyl', method='post')
+            button(type='submit') Añadir al carrito
     a(href="/vinyl")
         button Volver
