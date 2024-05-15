@@ -28,7 +28,7 @@ const cartModel = sequelize.define("cart",
 
 cartModel.belongsToMany(vinylModel, {
     as: "vinilos", 
-    through: "carrito_has_vinilos",
+    through: "cart_has_vinyls",
     foreignKey: "id_cart", 
     otherKey: "id_vinyl" ,
 });
