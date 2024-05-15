@@ -1,7 +1,5 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
-
-/* import cartModel from "./cartModel.js"; */
  import genreModel from './genreModel.js';
 
 const vinylModel = sequelize.define("vinyl",
@@ -21,7 +19,7 @@ const vinylModel = sequelize.define("vinyl",
             allowNull:false
         },
         price:{
-            type:DataTypes.DATE
+            type:DataTypes.NUMBER
         },
         relase_date:{
             type:DataTypes.INTEGER.UNSIGNED
