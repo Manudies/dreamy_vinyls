@@ -3,6 +3,7 @@ import vinylModel from "../../models/vinylModel.js";
 async function getAll() {
     try {
         const vinyls = await vinylModel.findAll({include:["genero"]});
+        console.log ("vinilos",vinyls);
         return { data: vinyls };
     }
     catch (error) {
@@ -13,7 +14,8 @@ async function getAll() {
 
 async function getById(id) {
     try {
-        const vinyl = await vinylModel.findByPk(id);
+        const vinyl = await vinylModel.findByPk(id,{include:["genero"]});
+        console.log("vinilo",vinyl);
         if (!vinyl) {
             return { error: "El vinilo no existe" };
         }
