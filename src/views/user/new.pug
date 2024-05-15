@@ -1,6 +1,9 @@
 extends ../layout
 
 block content
+    h1(class="h1_register") Admin Nuevo Usuario
+    if error 
+        p(class="error")=error
 
     form(class="register_form" action="/user", method="post") 
         label(for="user_name") Nombre 

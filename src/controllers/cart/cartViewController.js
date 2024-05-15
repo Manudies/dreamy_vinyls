@@ -19,9 +19,7 @@ async function createForm(req,res){
 
 async function create(req,res){
     const {id_cart,id_user,cart_closed} = req.body;
-    //const {id_cart,cart_closed,id_user} = req.query;
     const {error,data} = await cartController.create({id_cart,id_user,cart_closed});
-    //res.json({error,data});
     res.redirect("/cart");
 }
 async function updateForm(req,res){
@@ -40,9 +38,6 @@ async function update(req,res){
     console.log("le pasamos cart_closed = ", cart_closed)
     res.redirect("/cart");
 }
-
-
-
 
 async function remove(req,res){
     const id = parseInt(req.params.id);

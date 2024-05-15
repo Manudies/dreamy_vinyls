@@ -4,7 +4,6 @@ import vinylViewController from "../../controllers/vinyl/vinylViewController.js"
 import { isAdmin } from "../../controllers/middlewares/authMiddleware.js";
 const router = Router();
 
-
 router.get("/",vinylViewController.getAll);
 router.get("/new",isAdmin,vinylViewController.createForm);
 router.post("/",isAdmin,vinylViewController.create);

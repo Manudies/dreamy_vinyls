@@ -13,7 +13,6 @@ async function getById(req,res){
 }
 
 async function create(req,res){
-    // const {name,is_alive,birth_date} = req.body;
     const {album_name,artist_name,price,relase_date} = req.query;
     const {error,data} = await vinylController.create({album_name,artist_name,price,relase_date});
     res.json({error,data});
@@ -21,7 +20,6 @@ async function create(req,res){
 
 async function update(req,res){
     const id = parseInt(req.params.id);
-    // const {name,is_alive,birth_date} = req.body;
     const {album_name,artist_name,price,relase_date} = req.query;
     const {error,data} = await vinylController.update(id,{album_name,artist_name,price,relase_date});
     res.json({error,data});
@@ -32,8 +30,6 @@ async function remove(req,res){
     const {error,data} = await vinylController.remove(id);
     res.json({error,data});
 }
-
-
 
 export {
     getAll,

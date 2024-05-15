@@ -18,9 +18,7 @@ async function createForm(req,res){
 
 async function create(req,res){
     const {album_name,artist_name,price,relase_date} = req.body;
-    //const {album_name,artist_name,price,relase_date} = req.query;
     const {error,data} = await vinylController.create({album_name,artist_name,price,relase_date});
-    //res.json({error,data});
     res.redirect("/vinyl");
 }
 async function updateForm(req,res){

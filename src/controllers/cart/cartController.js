@@ -27,9 +27,6 @@ async function getById(id){
 async function create(cartData){
     try {
         const newcart= await cartModel.create(cartData);
-        // if(cartData.cart_closed == "on"){
-        //     cartData.cart_closed = 
-        // }
         return {data:newcart}
     } catch (error) {
         console.error(error);
@@ -61,7 +58,6 @@ async function update(id,cartData){
 
 async function remove(id){
     try {
-        // console.log("El id del carrito a borrar es: ", id)
         const cart = await cartModel.findByPk(id);
         await cart.destroy();
         return {data:cart};
@@ -72,7 +68,6 @@ async function remove(id){
     }
 }
 
-
 export {
     getAll,
     getById,
@@ -80,7 +75,6 @@ export {
     update,
     remove
 };
-
 
 export default {
     getAll,

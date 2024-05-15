@@ -4,7 +4,6 @@ import sequelize from "../config/sequelize.js";
 import vinylModel from './vinylModel.js';
 import userModel from './userModel.js';
 
-
 const cartModel = sequelize.define("cart",
     {
         id_cart:{
@@ -24,7 +23,6 @@ const cartModel = sequelize.define("cart",
         },
     }
 )
-
 
 cartModel.belongsToMany(vinylModel, {
     as: "vinilos", 

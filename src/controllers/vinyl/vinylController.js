@@ -26,7 +26,6 @@ async function getById(id) {
         console.error(error);
         return { error };
     }
-
 }
 
 async function create(vinylData) {
@@ -38,14 +37,12 @@ async function create(vinylData) {
         console.error(error);
         return {error}
     }
-
-
 }
 
 async function update(id, vinylData) {
     try {
-        if(vinylData.name === ""){
-            delete vinylData.name;
+        if(vinylData.album_name === ""){
+            delete vinylData.album_name;
         }
         const newVinyl = await vinylModel.update(vinylData,
             {
@@ -60,7 +57,6 @@ async function update(id, vinylData) {
         console.error(error);
         return {error}
     }
-   
 }
 
 async function remove(id) {
@@ -104,7 +100,6 @@ export {
     remove,
     addToCart
 };
-
 
 export default {
     getAll,
