@@ -64,7 +64,8 @@ async function update(id, vinylData) {
 
 async function remove(id) {
     try {
-        const result = await vinylModel.remove(id);
+        const result = await vinylModel.findByPk(id);
+        await result.destroy();
         return {data:result};
     } catch (error) {
         console.error(error);
