@@ -7,14 +7,33 @@
 .nav-elements{
     list-style: none;
     display: flex;
+    margin-bottom: 0px;
+
 }
 .nav-link a{
+    display: block;
     font-size: 1.2rem;
     padding:10px 10px;
     text-decoration: none;
     color: black;
 }
+
 .nav-link a:hover{
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
+.nav-link form button{
+    font-family:'Times New Roman', Times, serif;
+    border: none;
+    background-color: white;
+    font-size: 1.2rem;
+    padding:10px 10px;
+    text-decoration: none;
+    color: black;
+}
+.nav-link form button:hover{
     color: white;
     background-color: rgb(0, 0, 0);
     border-radius: 5px;

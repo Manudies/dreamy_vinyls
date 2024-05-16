@@ -104,6 +104,10 @@ async function login(user_name,password){
     }
 }
 
+async function logout(){
+    
+}
+
 async function update(id, userData) {
     try {
         if (userData.user_password) {
