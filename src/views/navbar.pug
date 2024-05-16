@@ -8,9 +8,12 @@ nav(class="navbar")
         li(class="nav-link")    
             a(href="/user/register") Registro        
         li(class="nav-link")    
-            a(href="/user/login") Login       
-        li(class="nav-link")    
             a(href="/vinyl") Vinilos 
-        li(class="nav-link")
-            form(class="nav-link" action="/user/logout", method="post")     
-                button  Logout
+        if !session.user
+            li(class="nav-link")    
+                a(href="/user/login") Login     
+        else 
+            li(class="nav-link")
+                form(class="nav-link" action="/user/logout", method="post")     
+                    button  Logout
+            p(class="nav-link")=("Hola: "+session.user.user_name)
