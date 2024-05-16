@@ -72,7 +72,6 @@ export {
     remove
 };
 
-
 export default {
     getAll,
     getById,

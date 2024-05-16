@@ -4,7 +4,6 @@ import sequelize from "../config/sequelize.js";
 import vinylModel from './vinylModel.js';
 import userModel from './userModel.js';
 
-
 const cartModel = sequelize.define("cart",
     {
         id_cart:{
@@ -25,15 +24,14 @@ const cartModel = sequelize.define("cart",
     }
 )
 
-
 cartModel.belongsToMany(vinylModel, {
     as: "vinilos", 
-    through: "carrito_has_vinilos",
+    through: "cart_has_vinyls",
     foreignKey: "id_cart", 
     otherKey: "id_vinyl" ,
 });
 
-cartModel.hasMany(userModel, { //belongsTo
+cartModel.hasMany(userModel, {
     as: "user", 
     foreignKey: 'id_user' 
 });

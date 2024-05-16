@@ -7,7 +7,6 @@ async function getAll(req,res){
 
 async function getById(req,res){
     const id = parseInt(req.params.id);
-    console.log("id",id);
     const{error,data} = await genreController.getById(id)
     res.render("genre/show",{error,genre:data});
 }
@@ -18,9 +17,7 @@ async function createForm(req,res){
 
 async function create(req,res){
     const genre_name = req.body;
-    //const genre_name = req.query;
     const {error,data} = await genreController.create(genre_name);
-    //res.json({error,data});
     res.redirect("/genre");
 }
 async function updateForm(req,res){
@@ -41,8 +38,6 @@ async function remove(req,res){
     const {error,data} = await genreController.remove(id);
     res.redirect("/genre");
 }
-
-
 
 export {
     getAll,

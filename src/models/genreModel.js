@@ -1,9 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
 
-/* import vinylModel from "./vinylModel.js"; */
-
-
 const genreModel = sequelize.define("genre",
     {
         id_genre:{
@@ -19,9 +16,4 @@ const genreModel = sequelize.define("genre",
     }
 )
 
-/* genreModel.hasMany(vinylModel, {
-    as: "vinilos",
-    foreignKey: "id_genre"
-});
- */
 export default genreModel;

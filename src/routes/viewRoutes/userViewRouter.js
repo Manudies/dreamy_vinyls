@@ -20,7 +20,5 @@ router.post("/:id",isAdmin,userViewController.update);
 //router.delete("/:id",userViewController.remove);
 router.post("/:id/remove",isAdmin,userViewController.remove);
 
-
-
 export default router;
 

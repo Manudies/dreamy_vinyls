@@ -36,7 +36,6 @@ async function getById(req,res){
 }
 
 async function create(req,res){
-    // const {name,is_alive,birth_date} = req.body;
     const {id_user, user_name, user_password, user_city, user_rol} = req.query;
     const {error,data} = await userController.create({id_user, user_name, user_password, user_city, user_rol});
     res.json({error,data});
@@ -44,7 +43,6 @@ async function create(req,res){
 
 async function update(req,res){
     const id = parseInt(req.params.id);
-    // const {name,is_alive,birth_date} = req.body;
     const {id_user, user_name, user_password, user_city, user_rol} = req.query;
     const {error,data} = await userController.update(id,{id_user, user_name, user_password, user_city, user_rol});
     res.json({error,data});
@@ -55,8 +53,6 @@ async function remove(req,res){
     const {error,data} = await userController.remove(id);
     res.json({error,data});
 }
-
-
 
 export {
     register,
