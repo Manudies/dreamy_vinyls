@@ -94,14 +94,14 @@ async function create(userData){
 async function register(user_name,password,passwordRepeat,user_city){
     try {
         if(!user_name || !password || !passwordRepeat){
-            return {error:"falta usuario o contraseña"};
+            return {error:"Falta usuario o contraseña"};
         }
         if(password !== passwordRepeat){
-            return {error:"las contraseñas no coinciden"};
+            return {error:"Las contraseñas no coinciden"};
         }
         const {data:oldUser} = await getByUser(user_name);
         if(oldUser){
-            return {error:"el usuario ya existe"};
+            return {error:"El usuario ya existe"};
         }
         const userData = {
             user_name,
@@ -112,7 +112,7 @@ async function register(user_name,password,passwordRepeat,user_city){
         return {data:newUser};
     } catch (error) {
         console.error(error);
-        return {error:"ha habido un error en el registro"}
+        return {error:"Ha habido un error en el registro"}
     }
 }
 
@@ -126,11 +126,11 @@ async function register(user_name,password,passwordRepeat,user_city){
 async function login(user_name,password){
     try {
         if(!user_name || !password ){
-            return {error:"falta ususario o contraseña"};
+            return {error:"Falta ususario o contraseña"};
         }
         const {data:oldUser} = await getByUser(user_name);
         if(!oldUser){
-            return {error:"la combinación de usuario y contraseña es errónea"};
+            return {error:"La combinación de usuario y contraseña es errónea"};
         }
         const isPasswordCorrect = await bcrypt.compare(password,oldUser.user_password);
         if(isPasswordCorrect){
@@ -143,7 +143,7 @@ async function login(user_name,password){
             return {token, data:user};
         }
         else{
-            return {error:"la combinación de usuario y contraseña es errónea"}
+            return {error:"La combinación de usuario y contraseña es errónea"}
         }
     } catch (error) {
         console.error(error);
