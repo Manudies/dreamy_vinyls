@@ -137,7 +137,8 @@ async function login(user_name,password){
             const token = jwt.sign({id:oldUser.id_user,user_name:oldUser.user_name},process.env.JWT_SECRET,{expiresIn: 60 * 60})
             const user = {
                 id_user:oldUser.id_user,
-                user_rol:oldUser.user_rol
+                user_rol:oldUser.user_rol,
+                user_name:oldUser.user_name
             }
             return {token, data:user};
         }

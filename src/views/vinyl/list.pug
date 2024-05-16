@@ -1,21 +1,28 @@
 extends ../layout
 
 block content
-    h1 lista de vinilos
+    h1 Lista de vinilos
     if error 
         p(class="error")= error
     if data
         ul
-            each vinyl in data 
-                li
-                    a(href="/vinyl/"+vinyl.id_vinyl)= vinyl.album_name
-                    a(href=`/vinyl/${vinyl.id_vinyl}/update`) 
-                        button Editar
-                    form(action=`/vinyl/${vinyl.id_vinyl}/remove`, method="post") 
-                        button(type="submit" class="confirm") Borrar
-                    form(action='/vinyl/add', method='post')
-                        input(type="hidden" value=vinyl.id_vinyl name="id_vinyl")
-                        button(type='submit') Añadir al carrito
-    a(href="/vinyl/new")
-        button Nuevo
+            if session.user
+                each vinyl in data 
+                    li
+                        a(href="/vinyl/"+vinyl.id_vinyl)= vinyl.album_name
+                        if session.user.user_rol=="admin"
+                            a(href=`/vinyl/${vinyl.id_vinyl}/update`) 
+                                button Editar
+                            form(action=`/vinyl/${vinyl.id_vinyl}/remove`, method="post") 
+                                button(type="submit") Borrar
+                        form(action='/vinyl/add', method='post')
+                            input(type="hidden" value=vinyl.id_vinyl name="id_vinyl")
+                            button(type='submit') Añadir al carrito
 
+                if session.user.user_rol=="admin"
+                    a(href="/vinyl/new")
+                        button Crear Nuevo Vinilo 
+            else 
+                each vinyl in data 
+                    li 
+                        a(href="/vinyl/"+vinyl.id_vinyl)= vinyl.album_name
