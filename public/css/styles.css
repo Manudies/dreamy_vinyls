@@ -186,5 +186,19 @@
     padding: 1px;
     font-size: 1.2rem;
     align-items: start;
+}
+
+.vinilo{
+    width: 375px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+    margin: 20px;
+    border: solid 2px black;
+    border-radius: 10px;
+    box-shadow: 5px 5px black;
 
 }
