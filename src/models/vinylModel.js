@@ -2,6 +2,19 @@ import { DataTypes } from "sequelize";
 import sequelize from "../config/sequelize.js";
  import genreModel from './genreModel.js';
 
+ /**
+ * @module models/vinylModel
+ */
+
+/**
+ * Vinyl model
+ * @typedef {Object} Vinyl
+ * @property {number} id_vinyl - Vinyl id
+ * @property {string} album_name - Album name
+ * @property {string} artist_name - Artist name
+ * @property {number} price - Price
+ * @property {number} relase_date - Release date
+ */
 const vinylModel = sequelize.define("vinyl",
     {
         id_vinyl:{
@@ -29,15 +42,10 @@ const vinylModel = sequelize.define("vinyl",
 
 
 
+
 vinylModel.belongsTo(genreModel, {
     as: "genero", 
     foreignKey: "id_genre" 
 });
-
-/* genreModel.belongsToMany(vinylModel, {
-    as: "carritos", 
-    through: "carrito_has_vinilos", 
-    foreignKey: "id_vinyl" 
-}); */
 
 export default vinylModel;

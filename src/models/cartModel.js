@@ -4,6 +4,17 @@ import sequelize from "../config/sequelize.js";
 import vinylModel from './vinylModel.js';
 import userModel from './userModel.js';
 
+/**
+ * @module models/cartModel
+ */
+
+/**
+ * Cart model
+ * @typedef {Object} Cart
+ * @property {number} id_cart - Cart id
+ * @property {number} id_user - User id
+ * @property {boolean} cart_closed - If the cart is closed
+ */
 const cartModel = sequelize.define("cart",
     {
         id_cart:{
@@ -16,13 +27,14 @@ const cartModel = sequelize.define("cart",
             type:DataTypes.INTEGER.UNSIGNED,
             allowNull:false
         },
+
         cart_closed: {
             type:DataTypes.BOOLEAN,
             allowNull:false,
             defaultValue:false
         },
-    }
-)
+    })
+
 
 cartModel.belongsToMany(vinylModel, {
     as: "vinilos", 
