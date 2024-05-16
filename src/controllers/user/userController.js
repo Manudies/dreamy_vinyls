@@ -2,6 +2,15 @@ import userModel from "../../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+/**
+ * @module controllers/user/userControllers
+ */
+
+/**
+ * Asynchronously retrieves all users.
+ *
+ * @return {Promise} An object containing the data of users or an error object.
+ */
 async function getAll(){
     try {
         const users = await userModel.findAll()
@@ -13,6 +22,12 @@ async function getAll(){
     }
 }
 
+/**
+ * Asynchronously retrieves a user by ID and returns an object with user data or an error object.
+ *
+ * @param {type} id - The ID of the user to retrieve.
+ * @return {type} An object containing the user data or an error object.
+ */
 async function getById(id){
     try {
         const user = await userModel.findByPk(id);
@@ -26,6 +41,12 @@ async function getById(id){
     }
 }
 
+/**
+ * Asynchronously retrieves a user by user_name and returns an object with user data or an error object.
+ *
+ * @param {type} user_name - The user_name to search for.
+ * @return {type} An object containing the user data or an error object.
+ */
 async function getByUser(user_name){
     try {
         const user = await userModel.findOne({where:{user_name:user_name}})
@@ -37,6 +58,12 @@ async function getByUser(user_name){
     }
 }
 
+/**
+ * Asynchronously creates a user with the provided user data and returns an object with the new user data or an error object.
+ *
+ * @param {type} userData - The user data to create a new user.
+ * @return {type} An object containing the new user data or an error object.
+ */
 async function create(userData){
     try {
         // Encripta la contraseña antes de crear el usuario
@@ -55,6 +82,15 @@ async function create(userData){
     }
 }
 
+/**
+ * Asynchronously registers a new user with the provided user data.
+ *
+ * @param {string} user_name - The username of the new user.
+ * @param {string} password - The password of the new user.
+ * @param {string} passwordRepeat - The repeated password for confirmation.
+ * @param {string} user_city - The city of the new user.
+ * @return {Object} An object containing either the new user data or an error message.
+ */
 async function register(user_name,password,passwordRepeat,user_city){
     try {
         if(!user_name || !password || !passwordRepeat){
@@ -80,6 +116,13 @@ async function register(user_name,password,passwordRepeat,user_city){
     }
 }
 
+/**
+ * Asynchronously handles user login functionality.
+ *
+ * @param {string} user_name - The username of the user.
+ * @param {string} password - The password of the user.
+ * @return {Object} JSON response with token and user data or an error message.
+ */
 async function login(user_name,password){
     try {
         if(!user_name || !password ){
@@ -108,10 +151,14 @@ async function login(user_name,password){
     }
 }
 
-async function logout(){
 
-}
-
+/**
+ * Asynchronously updates user information with the provided data and returns an object with the new user data or an error object.
+ *
+ * @param {type} id - The ID of the user to update.
+ * @param {type} userData - The user data to update.
+ * @return {type} An object containing the new user data or an error object.
+ */
 async function update(id, userData) {
     try {
         if (userData.user_password) {
@@ -133,6 +180,12 @@ async function update(id, userData) {
     }
 }
 
+/**
+ * Asynchronously removes a user by ID and returns an object with user data or an error object.
+ *
+ * @param {type} id - The ID of the user to remove.
+ * @return {type} An object containing the user data or an error object.
+ */
 async function remove(id){
     try {
         const user = await userModel.findByPk(id);

@@ -1,7 +1,15 @@
 import cartModel from "../../models/cartModel.js";
 
-async function getAll(id=null){
-    const condition = id ? {where:{id_user:id}} : null
+/**
+ * @module controllers/cart/cartController
+ */
+
+/**
+ * Retrieves all items from the cart.
+ *
+ * @return {Object} JSON response containing error and data of all items in the cart
+ */
+async function getAll(){
     try {
         const carts = await cartModel.findAll({include:["vinilos","user"], ...condition});
         return {data:carts}
@@ -12,6 +20,12 @@ async function getAll(id=null){
     }
 }
 
+/**
+ * Retrieves a specific item from the cart by ID.
+ *
+ * @param {type} id - The ID of the item to retrieve
+ * @return {Object} JSON response containing error and data of the retrieved item
+ */
 async function getById(id){
     try {
         const user = await cartModel.findByPk(id,{include:["vinilos","user"]});
@@ -25,6 +39,12 @@ async function getById(id){
     }
 }
 
+/**
+ * Creates a new item in the cart.
+ *
+ * @param {Object} cartData - The data of the new item to be created in the cart
+ * @return {Object} JSON response containing error or data of the created item
+ */
 async function create(cartData){
     try {
         const newcart= await cartModel.create(cartData);
@@ -34,6 +54,13 @@ async function create(cartData){
         return {error}
     }   
 }
+/**
+ * Updates an item in the cart.
+ *
+ * @param {type} id - The ID of the item to update
+ * @param {Object} cartData - The data to update the item with
+ * @return {Object} JSON response containing the updated item data
+ */
 async function update(id,cartData){
     try {
         if(cartData.cart_id==""){
@@ -56,6 +83,12 @@ async function update(id,cartData){
 
 }
 
+/**
+ * Removes an item from the cart.
+ *
+ * @param {type} id - The ID of the item to remove
+ * @return {Object} JSON response containing the removed item data
+ */
 async function remove(id){
     try {
         const cart = await cartModel.findByPk(id);

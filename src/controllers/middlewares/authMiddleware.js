@@ -1,5 +1,17 @@
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
+/**
+ * @module controllers/middlewares
+ */
+
+/**
+ * Middleware function to check if the token in the request header is correct.
+ *
+ * @param {Object} req - The request object
+ * @param {Object} res - The response object
+ * @param {Function} next - The next middleware function
+ * @return {void}
+ */
 function isTokenCorrect(req,res,next){
     try {
         const authorization = req.headers.authorization;
@@ -18,6 +30,14 @@ function isTokenCorrect(req,res,next){
 
 }
 
+/**
+ * Middleware function to check if the user has an active session.
+ *
+ * @param {Object} req - The request object
+ * @param {Object} res - The response object
+ * @param {Function} next - The next middleware function
+ * @return {void}
+ */
 function hasSession(req,res,next){
     const user = req.session.user;
     console.log("session user",req.session);
@@ -27,7 +47,15 @@ function hasSession(req,res,next){
     next();
 }
 
-//funcion para comprobar si es administrador
+
+/**
+ * Middleware function to check if the user is an admin.
+ *
+ * @param {Object} req - The request object
+ * @param {Object} res - The response object
+ * @param {Function} next - The next middleware function
+ * @return {void}
+ */
 function isAdmin(req,res,next){
     const user = req.session.user;
     if(!user || user.user_rol !== "admin"){
