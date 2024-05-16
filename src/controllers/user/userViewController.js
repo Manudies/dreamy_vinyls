@@ -1,6 +1,10 @@
 import userController from "./userController.js";
 
 /**
+ * @module controllers/user/userViewControllers
+ */
+
+/**
  * Renders the user registration form.
  *
  * @param {Object} req - The request object.

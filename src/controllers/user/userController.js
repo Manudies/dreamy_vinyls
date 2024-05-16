@@ -3,6 +3,10 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 /**
+ * @module controllers/user/userControllers
+ */
+
+/**
  * Asynchronously retrieves all users.
  *
  * @return {Promise} An object containing the data of users or an error object.

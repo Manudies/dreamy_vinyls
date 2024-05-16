@@ -2,6 +2,10 @@ import vinylModel from "../../models/vinylModel.js";
 import cartModel from "../../models/cartModel.js";
 
 /**
+ * @module controllers/vinyl/vinylControllers
+ */
+
+/**
  * Asynchronously retrieves all vinyl records and sends a JSON response with the list of vinyl.
  *
  * @return {Promise<void>} JSON response with the list of vinyl records.

@@ -1,6 +1,10 @@
 import vinylController from "./vinylController.js";
 
 /**
+ * @module controllers/vinyl/vinylViewControllers
+ */
+
+/**
  * Asynchronously retrieves all vinyl records and renders the vinyl list.
  *
  * @param {Object} req - The request object.

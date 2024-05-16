@@ -1,6 +1,10 @@
 import userController from "./userController.js";
 
 /**
+ * @module controllers/user/userApiControllers
+ */
+
+/**
  * Asynchronously registers a user with the provided user_name, password, and passwordRepeat.
  *
  * @param {Object} req - The request object.

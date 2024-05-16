@@ -1,6 +1,10 @@
 import vinylController from "./vinylController.js";
 
 /**
+ * @module controllers/vinyl/vinylApiControllers
+ */
+
+/**
  * Asynchronously retrieves all vinyl records and sends a JSON response with the list of vinyl.
  *
  * @param {Object} req - The request object.
