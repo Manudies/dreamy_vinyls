@@ -1,4 +1,5 @@
 import vinylModel from "../../models/vinylModel.js";
+import cartModel from "../../models/cartModel.js";
 
 async function getAll() {
     try {
@@ -65,13 +66,36 @@ async function remove(id) {
     }
     
 }
+//funcion para guardar en carrito
+async function addToCart(userId,vinylId) {
+
+    try {
+        // Verificar si el usuario tiene un carrito existente
+        let cart = await cartModel.findOne({ where: { id_user: userId } });
+        console.log("hay un carrito",cart)
+        // Si no hay carrito, crea uno
+        if (!cart) {
+            console.log("no hay carrito")
+            cart = await cartModel.create({ id_user: userId });
+        }
+
+        // Agregar el vinilo al carrito (asumiendo una relación de muchos a muchos)
+        await cart.addVinilo(vinylId);
+        console.log("añadiendo vinilo",cart)
+        return {data:cart}
+    } catch (error) {
+        console.error(error)
+        return {error}
+    }
+}
 
 export {
     getAll,
     getById,
     create,
     update,
-    remove
+    remove,
+    addToCart
 };
 
 export default {
@@ -79,5 +103,6 @@ export default {
     getById,
     create,
     update,
-    remove
+    remove,
+    addToCart
 };

@@ -11,5 +11,12 @@ block content
             p Comprar: Si
         else 
             p Comprar: No
+        if cart.user  
+            p Usuario: #{cart.user.user_name}
+        if cart.vinilos
+            each vinyl in cart.vinilos
+                p #{vinyl.album_name}
+                p #{vinyl.artist_name}
+                p #{vinyl.price}
     a(href="/cart")
         button Volver

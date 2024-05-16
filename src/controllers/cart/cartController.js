@@ -13,7 +13,7 @@ async function getAll(){
 
 async function getById(id){
     try {
-        const user = await cartModel.findByPk(id);
+        const user = await cartModel.findByPk(id,{include:["vinilos","user"]});
         if (!user) {
             return { error: "El carrito no existe"};
         }

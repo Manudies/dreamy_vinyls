@@ -12,5 +12,7 @@ block content
             p Fecha de lanzamiento: #{vinyl.relase_date}
         if vinyl.genero
             p genero: #{vinyl.genero.genre_name}
+        form(action='/vinyl', method='post')
+            button(type='submit') Añadir al carrito
     a(href="/vinyl")
         button Volver
