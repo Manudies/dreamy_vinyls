@@ -9,6 +9,7 @@ async function getById(req,res){
     const id = parseInt(req.params.id);
     console.log("id",id);
     const{error,data} = await cartController.getById(id)
+    console.log("carrito!!!",data)
     res.render("cart/show",{error,cart:data});
 }
 

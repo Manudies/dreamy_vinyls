@@ -74,25 +74,25 @@ async function remove(id) {
     
 }
 //funcion para guardar en carrito
-async function addToCart(req, res) {
-    const userId = req.user.id_user; // Suponiendo que tienes información del usuario en req.user
-    const vinylId = req.body.id_vinyl;
+async function addToCart(userId,vinylId) {
 
     try {
         // Verificar si el usuario tiene un carrito existente
-        let cart = await cart.findOne({ where: { userId } });
-
+        let cart = await cartModel.findOne({ where: { id_user: userId } });
+        console.log("hay un carrito",cart)
         // Si no hay carrito, crea uno
         if (!cart) {
-            cart = await cart.create({ userId });
+            console.log("no hay carrito")
+            cart = await cartModel.create({ id_user: userId });
         }
 
         // Agregar el vinilo al carrito (asumiendo una relación de muchos a muchos)
-        await cart.addVinyl(vinylId);
-
-        res.status(200).json({ message: 'Vinyl added to cart successfully' });
+        await cart.addVinilo(vinylId);
+        console.log("añadiendo vinilo",cart)
+        return {data:cart}
     } catch (error) {
-        res.status(500).json({ error: 'Error adding vinyl to cart' });
+        console.error(error)
+        return {error}
     }
 }
 

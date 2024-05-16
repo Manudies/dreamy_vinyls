@@ -13,7 +13,9 @@ block content
                         button Editar
                     form(action=`/vinyl/${vinyl.id_vinyl}/remove`, method="post") 
                         button(type="submit") Borrar
-                    form(action='/vinyl', method='post')
+                    form(action='/vinyl/add', method='post')
+                        input(type="hidden" value=vinyl.id_vinyl name="id_vinyl")
                         button(type='submit') Añadir al carrito
     a(href="/vinyl/new")
         button Nuevo
+

@@ -42,7 +42,14 @@ async function remove(req,res){
     res.redirect("/vinyl");
 }
 
-
+async function addToCart(req, res) {
+    const userId = req.session.user.id_user; 
+    
+    const vinylId = req.body.id_vinyl;
+    const {error,data:cart} = await vinylController.addToCart(userId,vinylId);
+    console.log("carrito",cart)
+    res.redirect("/cart/"+cart.id_cart);
+}
 
 export {
     getAll,
@@ -51,7 +58,8 @@ export {
     createForm,
     update,
     updateForm,
-    remove
+    remove,
+    addToCart
 }
 
 export default {
@@ -61,5 +69,6 @@ export default {
     createForm,
     update,
     updateForm,
-    remove
+    remove,
+    addToCart
 }
