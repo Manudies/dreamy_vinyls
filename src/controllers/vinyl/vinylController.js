@@ -3,7 +3,6 @@ import vinylModel from "../../models/vinylModel.js";
 async function getAll() {
     try {
         const vinyls = await vinylModel.findAll({include:["genero"]});
-        console.log ("vinilos",vinyls);
         return { data: vinyls };
     }
     catch (error) {
@@ -15,7 +14,6 @@ async function getAll() {
 async function getById(id) {
     try {
         const vinyl = await vinylModel.findByPk(id,{include:["genero"]});
-        console.log("vinilo",vinyl);
         if (!vinyl) {
             return { error: "El vinilo no existe" };
         }
@@ -25,26 +23,22 @@ async function getById(id) {
         console.error(error);
         return { error };
     }
-
 }
 
 async function create(vinylData) {
     try {
         const newVinyl = await vinylModel.create(vinylData);
-        console.log("new vinyl",newVinyl);
         return {data:newVinyl};
     } catch (error) {
         console.error(error);
         return {error}
     }
-
-
 }
 
 async function update(id, vinylData) {
     try {
-        if(vinylData.name === ""){
-            delete vinylData.name;
+        if(vinylData.album_name === ""){
+            delete vinylData.album_name;
         }
         const newVinyl = await vinylModel.update(vinylData,
             {
@@ -59,7 +53,6 @@ async function update(id, vinylData) {
         console.error(error);
         return {error}
     }
-   
 }
 
 async function remove(id) {
@@ -80,7 +73,6 @@ export {
     update,
     remove
 };
-
 
 export default {
     getAll,

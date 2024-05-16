@@ -7,13 +7,11 @@ async function getAll(req,res){
 
 async function getById(req,res){
     const id = parseInt(req.params.id);
-    console.log("id",id);
     const{error,data} = await genreController.getById(id)
     res.json({error,data});
 }
 
-async function create(req,res){
-    // const {name,is_alive,birth_date} = req.body; 
+async function create(req,res){ 
     const {genre_name} = req.query;
     const {error,data} = await genreController.create({genre_name});
     res.json({error,data});
@@ -21,7 +19,6 @@ async function create(req,res){
 
 async function update(req,res){
     const id = parseInt(req.params.id);
-    // const genre_name = req.body;
     const {genre_name} = req.query;
     const {error,data} = await genreController.update({genre_name});
     res.json({error,data});
@@ -32,8 +29,6 @@ async function remove(req,res){
     const {error,data} = await genreController.remove(id);
     res.json({error,data});
 }
-
-
 
 export {
     getAll,

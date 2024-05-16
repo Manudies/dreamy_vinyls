@@ -1,7 +1,5 @@
 import { DataTypes } from "sequelize"
 import sequelize from "../config/sequelize.js"
-/* 
-import cartModel from './cartModel.js';  */
 
 const userModel = sequelize.define("user", 
     {
@@ -26,11 +24,5 @@ const userModel = sequelize.define("user",
 
     }
 )
-
-/* userModel.hasMany(cartModel, {
-    as: "carrito", 
-    foreignKey: "id_user" 
-}); */
-
 
 export default userModel;

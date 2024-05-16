@@ -7,7 +7,6 @@ async function getAll(req,res){
 
 async function getById(req,res){
     const id = parseInt(req.params.id);
-    console.log("id",id);
     const{error,data} = await vinylController.getById(id)
     res.render("vinyl/show",{error,vinyl:data});
 }
@@ -18,9 +17,7 @@ async function createForm(req,res){
 
 async function create(req,res){
     const {album_name,artist_name,price,relase_date} = req.body;
-    //const {album_name,artist_name,price,relase_date} = req.query;
     const {error,data} = await vinylController.create({album_name,artist_name,price,relase_date});
-    //res.json({error,data});
     res.redirect("/vinyl");
 }
 async function updateForm(req,res){
@@ -41,8 +38,6 @@ async function remove(req,res){
     const {error,data} = await vinylController.remove(id);
     res.redirect("/vinyl");
 }
-
-
 
 export {
     getAll,
