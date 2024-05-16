@@ -73,7 +73,7 @@ async function login(req,res) {
  */
 async function logout(req,res){
     req.session.user = null;
-    res.redirect("/home");
+    res.redirect("/");
 }
 
 /**
