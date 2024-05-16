@@ -1,0 +1,19 @@
+extends ../layout
+
+block content 
+    if error 
+        p(class="error")= error
+    if user
+        form(action="/user/"+user.id_user, method="post")
+
+            label(for="user_name") Nombre 
+            input(id="user_name" type="text" name="user_name" value=user.user_name)
+
+            label(for="user_password") Contraseña 
+            input(id="user_password" type="password" name="user_password" value=user.user_password)
+
+            label(for="user_city") Ciudad 
+            input(id="user_city" type="text" name="user_city" value=user.user_city)  
+
+            button(type="submit" class="confirm") Guardar
+

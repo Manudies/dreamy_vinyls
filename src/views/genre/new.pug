@@ -1,0 +1,9 @@
+extends ../layout
+
+block content 
+    form(action="/genre", method="post") 
+        label(for="genre_name") Género 
+        input(id="genre_name" type="text" name="genre_name") 
+ 
+        button(type="submit") Crear
+

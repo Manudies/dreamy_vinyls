@@ -1,0 +1,12 @@
+extends ../layout
+
+block content 
+    if error 
+        p(class="error")= error
+    if genre
+        form(action="/genre/"+genre.id_genre, method="post") 
+            label(for="genre_name") Género 
+            input(id="genre_name" type="text" name="genre_name" value=genre.genre_name) 
+
+            button(type="submit" class="confirm") Guardar
+

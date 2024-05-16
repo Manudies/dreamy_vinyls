@@ -1,0 +1,13 @@
+extends ../layout
+
+block content 
+    if error 
+        p(class="error")= error
+    if cart
+        form(action="/cart/"+cart.id_cart, method="post") 
+            label(for="id_user") Id del Usuario
+            input(id="id_user" type="text" name ="id_user" value=cart.id_user) 
+            label(for="cart_closed") Comprar?
+            input#cart_closed(type="checkbox", name="cart_closed" checked=cart.cart_closed)
+            button(type="submit" class="confirm") Guardar
+

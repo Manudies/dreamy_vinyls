@@ -1,0 +1,22 @@
+extends ../layout
+
+block content 
+    if error 
+        p(class="error")= error
+    if vinyl
+        form(action="/vinyl/"+vinyl.id_vinyl, method="post") 
+
+            label(for="album_name") Nombre del album
+            input(id="album_name" type="text" name="album_name" value=vinyl.album_name) 
+
+            label(for="artist_name") Nombre del artista
+            input(id="artist_name" type="text" name="artist_name" value=vinyl.artist_name) 
+
+            label(for="price") Precio
+            input(id="price" type="number" name="price" value=vinyl.price) 
+
+            label(for="relase_date")
+            input#relase_date(type="date", name="relase_date" value=vinyl.relase_date)  
+            
+            button(type="submit" class="confirm") Guardar
+

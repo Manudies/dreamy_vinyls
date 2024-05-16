@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+    if error 
+        p(class="error")= error
+    if genre 
+        h2= genre.genre_name 
+
+    a(href="/genre")
+        button Volver

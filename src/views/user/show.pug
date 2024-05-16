@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+    if error 
+        p(class="error")= error
+    if user 
+        h2= "Usuario nº "+user.id_user
+        h3= "Nombre: "+user.user_name
+        h3= "Ciudad: "+user.user_city
+    a(href="/user")
+        button Volver

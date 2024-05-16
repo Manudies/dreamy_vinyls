@@ -1,0 +1,27 @@
+extends ../layout
+
+block content 
+    h1(class="h1_register") Login
+    if error 
+        p(class="error")=error
+    form(class="register_form" action="/user/login", method="post") 
+        label(for="user_name") Nombre de usuario
+        input#user_name(type="text", name="user_name" placeholder="Introduce tu usuario") 
+        label(for="password") Contraseña
+        div(class="contenedor_contraseña") 
+            input#password(type="password", name="password" placeholder="Introduce tu contraseña") 
+            button#toggle_password(type="button") 🕶️ 
+        button(type="submit") Login
+
+
+    script.
+        document.getElementById("toggle_password").addEventListener("click", function() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                this.textContent = "👓";
+            } else {
+                passwordInput.type = "password";
+                this.textContent = "🕶️";
+            }
+        });

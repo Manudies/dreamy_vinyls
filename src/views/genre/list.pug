@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+    h1 lista de géneros
+    if error 
+        p(class="error")= error
+    if data
+        ul
+            each genre in data 
+                li
+                    a(href="/genre/"+genre.id_genre)= genre.genre_name
+                    a(href=`/genre/${genre.id_genre}/update`) 
+                        button Editar
+                    form(action=`/genre/${genre.id_genre}/remove`, method="post") 
+                        button(type="submit" class="confirm") Borrar
+    a(href="/genre/new")
+        button Nuevo

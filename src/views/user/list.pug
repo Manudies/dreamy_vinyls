@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+    h1(class="h1_register") Lista de usuarios
+    if error 
+        p(class="error")= error
+    if data
+        ul(class="user_list_data")
+            each user in data 
+                li
+                    a(href="/user/"+user.id_user)= user.user_name
+                    li= user.user_city
+                    if user.user_rol == 0 
+                        li Administardor
+                    if user.user_rol == 1 || user.user_rol == null 
+                        li Cliente
+                    div(class="buttom_div")
+                        a(class="user_boton_editar" href=`/user/${user.id_user}/update`) 
+                            button Editar
+                        form(action=`/user/${user.id_user}/remove`, method="post") 
+                            button(type="submit" class="confirm") Borrar
+    a(href="/user/new")
+        button Nuevo
