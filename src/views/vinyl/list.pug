@@ -1,14 +1,14 @@
 extends ../layout
 
 block content
-    h1 Lista de vinilos
+    h1(class="h1_vinilos") Lista de vinilos
     if error 
         p(class="error")= error
     if data
-        ul
+        ul(class="list_vinilos")
             if session.user
                 each vinyl in data 
-                    li
+                    li(class="list_vinilos")
                         a(href="/vinyl/"+vinyl.id_vinyl)= vinyl.album_name
                         if session.user.user_rol=="admin"
                             a(href=`/vinyl/${vinyl.id_vinyl}/update`) 
