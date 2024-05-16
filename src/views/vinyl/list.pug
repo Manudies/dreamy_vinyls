@@ -12,7 +12,7 @@ block content
                     a(href=`/vinyl/${vinyl.id_vinyl}/update`) 
                         button Editar
                     form(action=`/vinyl/${vinyl.id_vinyl}/remove`, method="post") 
-                        button(type="submit") Borrar
+                        button(type="submit" class="confirm") Borrar
                     form(action='/vinyl/add', method='post')
                         input(type="hidden" value=vinyl.id_vinyl name="id_vinyl")
                         button(type='submit') Añadir al carrito
