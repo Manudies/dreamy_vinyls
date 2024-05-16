@@ -11,7 +11,7 @@ import cartModel from "../../models/cartModel.js";
  */
 async function getAll(){
     try {
-        const carts = await cartModel.findAll({include:["vinilos","user"]})
+        const carts = await cartModel.findAll({include:["vinilos","user"], ...condition});
         return {data:carts}
     }
     catch (error) {
@@ -28,7 +28,7 @@ async function getAll(){
  */
 async function getById(id){
     try {
-        const user = await cartModel.findByPk(id);
+        const user = await cartModel.findByPk(id,{include:["vinilos","user"]});
         if (!user) {
             return { error: "El carrito no existe"};
         }

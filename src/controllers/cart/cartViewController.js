@@ -12,7 +12,9 @@ import cartController from "./cartController.js";
  * @return {void}
  */
 async function getAll(req,res){
-    const {error,data} = await cartController.getAll();
+    const {id_user, user_rol}=req.session.user;
+    const id = user_rol == "admin" ? null:id_user;
+    const {error,data} = await cartController.getAll(id);
     res.render("cart/list",{error,data});
 }
 
@@ -24,9 +26,16 @@ async function getAll(req,res){
  * @return {type} JSON response containing error and data of the retrieved item
  */
 async function getById(req,res){
+    const {id_user, user_rol}=req.session.user;
     const id = parseInt(req.params.id);
     console.log("id",id);
     const{error,data} = await cartController.getById(id)
+    if(user_rol !== "admin"){
+        if(id_user !== data.id_user){
+            return res.redirect("/cart")
+        }
+    }
+    console.log("carrito!!!",data)
     res.render("cart/show",{error,cart:data});
 }
 

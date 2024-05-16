@@ -11,5 +11,6 @@ nav(class="navbar")
             a(href="/user/login") Login       
         li(class="nav-link")    
             a(href="/vinyl") Vinilos 
-        li(class="nav-link")    
-            a(href="/user/logout") Logout
+        li(class="nav-link")
+            form(class="nav-link" action="/user/logout", method="post")     
+                button  Logout
