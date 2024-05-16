@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    h1 lista de carritos
+    h1 Lista de carritos
     if error 
         p(class="error")= error
     if data
@@ -10,9 +10,9 @@ block content
                 li  
                     p(cart.id_cart)= "Carrito número: "+ cart.id_cart
                     a(href="/cart/"+cart.id_cart)="El Id del dueño del carrito es: "+ cart.id_user
-                    a(href=`/cart/${cart.id_cart}/update`) 
-                        button Editar
+                    //- a(href=`/cart/${cart.id_cart}/update`) 
+                    //-     button Editar
                     form(action=`/cart/${cart.id_cart}/remove`, method="post") 
                         button(type="submit" class="confirm") Borrar
-    a(href="/cart/new")
-        button Nuevo
+    //- a(href="/cart/new")
+    //-     button Nuevo
