@@ -28,14 +28,12 @@ async function getAll(req,res){
 async function getById(req,res){
     const {id_user, user_rol}=req.session.user;
     const id = parseInt(req.params.id);
-    console.log("id",id);
     const{error,data} = await cartController.getById(id)
     if(user_rol !== "admin"){
         if(id_user !== data.id_user){
             return res.redirect("/cart")
         }
     }
-    console.log("carrito!!!",data)
     res.render("cart/show",{error,cart:data});
 }
 
