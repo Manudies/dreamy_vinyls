@@ -9,7 +9,8 @@ import cartModel from "../../models/cartModel.js";
  *
  * @return {Object} JSON response containing error and data of all items in the cart
  */
-async function getAll(){
+async function getAll(id=null){
+    const condition = id ? {where:{id_user:id}} : null
     try {
         const carts = await cartModel.findAll({include:["vinilos","user"], ...condition});
         return {data:carts}
