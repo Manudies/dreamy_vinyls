@@ -1,8 +1,9 @@
 import cartModel from "../../models/cartModel.js";
 
-async function getAll(){
+async function getAll(id=null){
+    const condition = id ? {where:{id_user:id}} : null
     try {
-        const carts = await cartModel.findAll({include:["vinilos","user"]})
+        const carts = await cartModel.findAll({include:["vinilos","user"], ...condition});
         return {data:carts}
     }
     catch (error) {

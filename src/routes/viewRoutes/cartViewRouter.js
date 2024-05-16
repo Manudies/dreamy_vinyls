@@ -1,14 +1,14 @@
 import { Router } from "express";
 
 import cartViewController from "../../controllers/cart/cartViewController.js";
-import { isAdmin } from "../../controllers/middlewares/authMiddleware.js";
+import { isAdmin, hasSession } from "../../controllers/middlewares/authMiddleware.js";
 
 const router = Router();
 
-router.get("/",cartViewController.getAll);
-router.get("/new",isAdmin,cartViewController.createForm);
-router.post("/",isAdmin,cartViewController.create);
-router.get("/:id",isAdmin,cartViewController.getById);
+router.get("/",hasSession, cartViewController.getAll);
+// router.get("/new",isAdmin,cartViewController.createForm);
+// router.post("/",isAdmin,cartViewController.create);
+router.get("/:id",hasSession,cartViewController.getById);
 router.get("/:id/update",isAdmin,cartViewController.updateForm);
 router.post("/:id",isAdmin,cartViewController.update);
 //router.delete("/:id",cartViewController.remove);

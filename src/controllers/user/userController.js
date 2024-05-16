@@ -39,8 +39,11 @@ async function getByUser(user_name){
 
 async function create(userData){
     try {
-        //TODO: Se deberia comprobar si el usuario existe
         // Encripta la contraseña antes de crear el usuario
+        const {data:oldUser} = await getByUser(userData.user_name);
+        if(oldUser){
+            return {error:"el usuario ya existe"};
+        }
         const hash = await bcrypt.hash(userData.user_password, 10);
         userData.user_password = hash;
 
@@ -105,7 +108,7 @@ async function login(user_name,password){
 }
 
 async function logout(){
-    
+
 }
 
 async function update(id, userData) {
