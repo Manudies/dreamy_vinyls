@@ -4,19 +4,20 @@ block content
     if error 
         p(class="error")= error
     if cart 
-        h2= cart.id_user
+        h2 El carrito de #{cart.id_cart} pertenece a #{cart.user.user_name}
         //- Otra manera de hacerlo
         //- p Comprar: #{cart.cart_closed==1 ? 'si': 'no'} 
         if cart.cart_closed == 1
-            p Comprar: Si
+            p Comprado: Si
         else 
-            p Comprar: No
-        if cart.user  
-            p Usuario: #{cart.user.user_name}
+            p Comprado: No
+        //- if cart.user  
+        //-     p Usuario: #{cart.user.user_name}
         if cart.vinilos
             each vinyl in cart.vinilos
-                p #{vinyl.album_name}
-                p #{vinyl.artist_name}
-                p #{vinyl.price}
-    a(href="/cart")
-        button Volver
+                div(class="vinilo") Vinilo #{vinyl.id_vinyl}:
+                    p Nombre: #{vinyl.album_name}
+                    p Grupo: #{vinyl.artist_name}
+                    p Precio: #{vinyl.price}
+    a(href="/vinyl")
+        button Seguir comprando

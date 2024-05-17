@@ -12,7 +12,7 @@ router.get("/:id",hasSession,cartViewController.getById);
 router.get("/:id/update",isAdmin,cartViewController.updateForm);
 router.post("/:id",isAdmin,cartViewController.update);
 //router.delete("/:id",cartViewController.remove);
-router.post("/:id/remove",isAdmin,cartViewController.remove);
+router.post("/:id/remove",hasSession,cartViewController.remove);
 
 export default router;
 

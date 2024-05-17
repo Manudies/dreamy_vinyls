@@ -111,7 +111,6 @@ async function remove(id) {
  * @return {Object} An object containing the cart data after adding the vinyl record or an error object.
  */
 async function addToCart(userId,vinylId) {
-
     try {
         let cart = await cartModel.findOne(
             { 
@@ -120,16 +119,12 @@ async function addToCart(userId,vinylId) {
                         id_user: userId ,
                         cart_closed : false
                 }
-                 
             }
         );
-        console.log("hay un carrito",cart)
         if (!cart) {
-            console.log("no hay carrito")
             cart = await cartModel.create({ id_user: userId });
         }
         await cart.addVinilo(vinylId);
-        console.log("añadiendo vinilo",cart)
         return {data:cart}
     } catch (error) {
         console.error(error)

@@ -21,7 +21,6 @@ function isTokenCorrect(req,res,next){
         const token =authorization.split("Bearer ")[1];
         const decoded = jwt.verify(token,process.env.JWT_SECRET);
         req.user = decoded; //linea añadida en la prueba
-        console.log(decoded)
         next();
     } catch (error) {
         console.error(error);
@@ -40,7 +39,6 @@ function isTokenCorrect(req,res,next){
  */
 function hasSession(req,res,next){
     const user = req.session.user;
-    console.log("session user",req.session);
     if(!user){
         return res.redirect("/user/login");
     }
